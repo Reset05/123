@@ -1,0 +1,135 @@
+/* Root */
+
+.container{
+    padding: 0 5%;
+}
+
+:root{
+    --primary-color: #31c9c0;  
+    --gray-color: #858997;
+    --dark-blue: #292936;
+}
+
+/* Menu */
+
+.container__menu{
+    background: #1f1f21;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo__text{
+    font-size: 24px;
+    color: #34d3c8;
+    border: 1px solid var(--primary-color);
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+
+.link__menu{
+    color: var(--gray-color);
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.link__menu:nth-child(1){
+    color: #fff;
+}
+
+.logo__category{
+    display: flex;
+    align-items: center;
+}
+
+.info__text{
+    color: #fff;
+}
+
+.info__text span{
+    color: var(--gray-color);
+    margin: 0px 5px;
+}
+
+.info__text i{
+    color: #fff;
+    font-size: 18px;
+}
+
+.link__menu:hover{
+    color: #fff;
+}
+
+/* Search */
+
+.container__search{
+    padding: 25px 0;
+    background: var(--dark-blue);
+    border-bottom-left-radius: 100px ;
+    border-bottom-right-radius: 100px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.link__sc{
+    color: #fff;
+}
+
+.link__sc i{
+    margin-right: 10px;
+}
+
+.form{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.inp__search{
+    width: 600px;
+    height: 50px;
+    border-radius: 50px;
+    font-family: 'Comfortaa', cursive !important;
+    font-weight: 800;
+    font-size: 16px;
+    padding-left: 25px;
+    outline: none;
+}
+
+.inp__submit{
+    width: 150px;
+    position: absolute;
+    right: 5px;
+    border-radius: 50px;
+    height: 45px;
+    top: 50%;
+    transform: translate(-1%,-50%);
+    background: var(--primary-color);
+    border: none;
+    font-family: 'Comfortaa', cursive !important;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login__text{
+    color: var(--gray-color) !important;
+    margin-left: 5px;
+}
+
+.login__cart span{
+    color: #fff;
+    margin: 0px 5px;
+}
+
+.link__cart i{
+    color: #fff;
+    font-size: 21px;
+}
+
+.link__login i{
+    color: #fff;
+    font-size: 21px;
+}

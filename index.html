@@ -12,6 +12,69 @@
     <title>TechnoShop</title>
 </head>
 <body>
+    
+    <section class="modal__window modal__window__signin none">
+        <div class="container__window">
+            <div class="title__modal">
+                <h2>Вход</h2>
+            </div>
+            <div class="signin">
+                <div class="exit">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <form action="" method="post">
+                    <div class="block__form">
+                        <input class="inp__form" required type="text" name="login" id="">
+                        <p class="text__form">Логин</p>
+                    </div>
+
+                    <div class="block__form">
+                        <input class="inp__form" required type="password" name="pass" id="">
+                        <p class="text__form">Пароль</p>
+                    </div>
+
+                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                </form>
+
+                <p class="text__signup">Если у вас нет аккаунат, можете его <a class="link__reg" href="">зарегестрировать.</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="modal__window modal__window__reg none">
+        <div class="container__window">
+            <div class="title__modal">
+                <h2>Регистрация</h2>
+            </div>
+            <div class="signin">
+                <div class="exit__reg">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <form action="" method="post">
+                    <div class="block__form">
+                        <input class="inp__form" required type="text" name="login" id="">
+                        <p class="text__form">Логин</p>
+                    </div>
+
+                    <div class="block__form">
+                        <input class="inp__form" required type="password" name="pass" id="">
+                        <p class="text__form">Пароль</p>
+                    </div>
+
+                    <div class="block__form">
+                        <input class="inp__form" required type="text" name="pass" id="">
+                        <p class="text__form">Почта</p>
+                    </div>
+
+                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                </form>
+
+                <p class="text__signup">Если у вас есть аккаунат, можете <a class="link__login" href="">войти в него.</a></p>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Меню -->
 
     <section class="menu">
@@ -45,7 +108,7 @@
            <div class="form">
                 <form action="">
                     <input class="inp__search" type="text" name="" id="" placeholder="Введите здесь">
-                    <button class="inp__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
            </div>
 

@@ -489,7 +489,7 @@
     flex-wrap: wrap;
 }
 
-/* modal reg */
+/* Modal Reg */
 
 .modal__window{
     width: 500px;
@@ -614,4 +614,94 @@
     right: 15px;
     top: 15px;
     cursor: pointer;
+}
+
+/* Cart */
+
+.carts{
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    background: #fff;
+    top: 200px;
+    z-index: 2;
+    right: 0;
+    overflow-x: hidden;
+}
+
+.title__cart{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.exit__cart{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.cartitem{
+    display: flex;
+    padding: 20px 0;
+}
+
+.imgitem{
+    width: 100px;
+    height: 120px;
+}
+
+.textitem{
+    margin-left: 30px;
+    font-size: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.counter{
+    display: flex;
+}
+
+.count{
+    padding: 0 20px;
+}
+
+.plus{
+    cursor: pointer;
+}
+
+.minus{
+    cursor: pointer;
+}
+
+.price__cart{
+    color: var(--primary-color);
+}
+
+.title__total{
+    font-size: 21px;
+    margin-top: 50px;
+}
+
+.btn__buy__cart{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+.btn__buy__cart button{
+    padding: 10px 30px;
+    background: #fff;
+    border: 1px solid rgb(210, 210, 210);
+    font-family:'Advent Pro', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn__buy__cart button:hover{
+    background: var(--primary-color);
+    color: #fff;
 }

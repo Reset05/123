@@ -623,10 +623,11 @@
     height: 500px;
     position: absolute;
     background: #fff;
-    top: 200px;
+    top: 160px;
     z-index: 2;
-    right: 0;
+    right: 1px;
     overflow-x: hidden;
+    border: 1px solid var(--light-grey);
 }
 
 .title__cart{

@@ -12,6 +12,98 @@
     <title>TechnoShop</title>
 </head>
 <body>
+
+    <!-- Вход-->
+    <section class="modal__window modal__window__signin none">
+        <div class="container__window">
+            <div class="title__modal">
+                <h2>Вход</h2>
+            </div>
+            <div class="signin">
+                <div class="exit">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <form action="" method="post">
+                    <div class="block__form">
+                        <input class="inp__form" required type="text" name="login" id="">
+                        <p class="text__form">Логин</p>
+                    </div>
+
+                    <div class="block__form">
+                        <input class="inp__form" required type="password" name="pass" id="">
+                        <p class="text__form">Пароль</p>
+                    </div>
+
+                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                </form>
+
+                <p class="text__signup">Если у вас нет аккаунат, можете его <a class="link__reg" href="">зарегестрировать.</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Регистрация -->
+    <section class="modal__window modal__window__reg none">
+        <div class="container__window">
+            <div class="title__modal">
+                <h2>Регистрация</h2>
+            </div>
+            <div class="signin">
+                <div class="exit__reg">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <form action="" method="post">
+                    <div class="block__form">
+                        <input class="inp__form" required type="text" name="login" id="">
+                        <p class="text__form">Логин</p>
+                    </div>
+
+                    <div class="block__form">
+                        <input class="inp__form" required type="password" name="pass" id="">
+                        <p class="text__form">Пароль</p>
+                    </div>
+
+                    <div class="block__form">
+                        <input class="inp__form" required type="text" name="pass" id="">
+                        <p class="text__form">Почта</p>
+                    </div>
+
+                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                </form>
+
+                <p class="text__signup">Если у вас есть аккаунат, можете <a class="link__login" href="">войти в него.</a></p>
+            </div>
+        </div>
+    </section>
+
+<!-- Корзина -->
+    <section class="carts none">
+        <div class="container container__cart">
+            <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h3 class="title__cart">Корзина</h3>
+            <div class="container-cartitem">
+                <div data-id="0" class="cartitem">
+                    <div class="logoitem">
+                        <img class="imgitem" src="" alt="">
+                    </div>
+                    <div class="textitem">
+                        <h3>Title</h3>
+                        <div class="counter">
+                            <i data-action="minus" class="minus fa-regular fa-square-minus"></i>
+                            <p data-counter class="count">1</p>
+                            <i data-action="plus" class="plus fa-regular fa-square-plus"></i>
+                        </div>
+                        <p class="price__cart">Price</p>
+                    </div>
+                </div>
+            </div>
+            <div class="title__total">Итого:</div>
+    
+            <div class="btn__buy__cart">
+                <button>Купить</button>
+            </div>
+        </div>
+    </section>
     
     <section class="menu">
         <!-- Меню с ссылками на разделы сайта -->

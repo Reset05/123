@@ -705,3 +705,142 @@
     background: var(--primary-color);
     color: #fff;
 }
+
+/* Product */
+
+.container__product{
+    padding: 50px 5%;
+    display: flex;
+}
+
+.oversize__photo{
+    width: 500px;
+    height: 500px;
+    background: black;
+}
+
+.minisize__photo .img{
+    width: 125px;
+    height: 125px;
+    background: black;
+    margin-right: 10px;
+}
+
+.minisize__photo{
+    margin-top: 20px;
+    display: flex;
+}
+
+.minisize__photo .img:last-child{
+    margin-right: 0;
+}
+
+.btn__buy__product{
+    width: 150px;
+    border-radius: 50px;
+    height: 45px;
+    background: var(--primary-color);
+    border: none;
+    font-family: 'Comfortaa', cursive !important;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 0 5px 10px #21c0b74d;
+}
+
+.desc__product{
+    margin-left: 100px;
+}
+
+.block__buy{
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+    justify-content: space-between;
+    background: var(--light-grey);
+    padding: 50px;
+    width: 500px;
+    border-radius: 12px;
+}
+
+.title__product h2{
+    font-size: 42px;
+    margin-bottom: 25px;
+}
+
+.desc{
+    margin-top: 100px;
+}
+
+.price__product{
+    font-size: 32px;
+    font-weight: 900;
+}
+
+/* Характеристики */
+
+.container__characteristic{
+    padding: 150px 5%;
+    border-radius: 15px;
+}
+
+.header{
+    background: var(--dark-blue);
+    padding: 50px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.header span{
+    color: #fff;
+}
+
+.header a{
+    color: var(--grey-color);
+    transition: 0.3s;
+}
+
+.header a:first-child{
+    color: #fff;
+}
+
+.header a:hover{
+    color: #fff;
+}
+
+.describe{
+    padding: 100px;
+    border: 1px solid var(--light-grey);
+    border-radius: 15px;
+}
+
+.type__desc{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    background: var(--light-grey);
+}
+
+.type__desc:nth-child(2n){
+    background: var(--grey-color);
+}
+
+.container__item__news{
+    padding: 50px 5%;
+}
+
+.image__news{
+    width: 100%;
+    height: 600px;
+    background: black;
+    border-radius: 25px;
+    margin-bottom: 50px;
+}
+
+.title__news{
+    display: flex;
+    justify-content: center;
+    font-size: 42px;
+    margin-bottom: 50px;
+}

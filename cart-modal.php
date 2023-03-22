@@ -1,11 +1,3 @@
-<?php 
-session_start();
-require_once __DIR__ . '/db/db.php';
-require_once __DIR__ . '/db/funcs.php';
-require_once __DIR__ . '/cart.php';
-require_once __DIR__ . '/index.phtml';
-
-?>
 <section class="carts none">
         <div class="container container__cart">
             <?php if(!empty($_SESSION['cart'])): ?>

@@ -1,9 +1,8 @@
 <?php
+error_reporting(-1);
 session_start();
 require_once __DIR__ . '/db/db.php';
 require_once __DIR__ . '/db/funcs.php';
-require_once __DIR__ . '/cart.php';
-require_once __DIR__ . '/cart-modal.php';
 $products = get_products();
 ?>
 
@@ -93,6 +92,8 @@ $products = get_products();
 
 </div>
 </div>
+
+<?php debug($_SESSION); // session_destroy(); ?>
 
 
     <!-- Меню -->

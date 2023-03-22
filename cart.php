@@ -2,8 +2,8 @@
 
 error_reporting(-1);
 session_start();
-require_once __DIR__ . '/db/db.php';
-require_once __DIR__ . '/db/funcs.php';
+include_once __DIR__ . '/db/db.php';
+include_once __DIR__ . '/db/funcs.php';
 
 if (isset($_GET['cart'])) {
     switch ($_GET['cart']) {
@@ -16,14 +16,14 @@ if (isset($_GET['cart'])) {
             } else {
                 add_to_cart($product);
                 ob_start();
-                require __DIR__ . '/cart-modal.php';
+                include __DIR__ . '/cart-modal.php';
                 $cart = ob_get_clean();
                 echo json_encode(['code' => 'ok', 'answer' => $cart]);
             }
             break;
 
         case 'show':
-            require __DIR__ . '/cart-modal.php';
+            include __DIR__ . '/cart-modal.php';
             break;
     }
 }

@@ -3,7 +3,7 @@
 $host = 'localhost';
 $db = 'catalog';
 $user = 'root';
-$pass = '';
+$pass = 'root';
 $charset = 'utf8';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

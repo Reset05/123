@@ -5,7 +5,7 @@ $(function() {
         $('#cart-modal').modal();
     }
 
-    $('.btn__buy').on('click', function (e) {
+    $('.add-to-cart').on('click', function (e) {
         e.preventDefault();
         let id = $(this).data('id');
 
@@ -27,20 +27,19 @@ $(function() {
         });
     });
 
-});
+    $('#get-cart').on('click', function (e) {
+        e.preventDefault();
 
-$('#get-cart').on('click', function (e) {
-    e.preventDefault();
-
-    $.ajax({
-        url: 'cart.php',
-        type: 'GET',
-        data: {cart: 'show'},
-        success: function (res) {
-            showCart(res);
-        },
-        error: function () {
-            alert('Error');
-        }
+        $.ajax({
+            url: 'cart.php',
+            type: 'GET',
+            data: {cart: 'show'},
+            success: function (res) {
+                showCart(res);
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
     });
 });

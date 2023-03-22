@@ -1,10 +1,5 @@
-<section class="carts none">
-        <div class="container container__cart">
-            <?php if(!empty($_SESSION['cart'])): ?>
-            <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
-            <h3 class="title__cart">Корзина</h3>
-            <?php foreach($_SESSION['cart'] as $id => $item): ?>
-            <div class="container-cartitem">
+<?php if(!empty($_SESSION['cart'])): ?>
+    <?php foreach($_SESSION['cart'] as $id => $item): ?>
                 <div data-id="<?php echo $id ?>" class="cartitem">
                     <div class="logoitem">
                     <img class="imgitem" src="img/<?php echo $item['img'] ?>" alt="">
@@ -18,9 +13,8 @@
                         </div>
                         <p class="price__cart"><?php echo $item['price'] ?></p>
                     </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
+               </div>
+               <?php endforeach; ?>
             <div class="title__total">Итого: <?php echo $_SESSION['cart.sum'] ?></div>
             <?php else: ?>
                 <p>Корзина пуста...</p>
@@ -30,5 +24,3 @@
                 <button>Купить</button>
                 <?php endif; ?>
             </div>
-        </div>
-    </section>

@@ -6,12 +6,12 @@ require_once __DIR__ . '/db/db.php';
 require_once __DIR__ . '/db/funcs.php';
 
 if (isset($_GET['cart'])) {
-    switch($_GET['cart']) {
+    switch ($_GET['cart']) {
         case 'add':
             $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
             $product = get_product($id);
 
-            if(!$product) {
+            if (!$product) {
                 echo json_encode(['code' => 'error', 'answer' => 'Error product']);
             } else {
                 add_to_cart($product);
@@ -21,7 +21,9 @@ if (isset($_GET['cart'])) {
                 echo json_encode(['code' => 'ok', 'answer' => $cart]);
             }
             break;
+
+        case 'show':
+            require __DIR__ . '/cart-modal.php';
+            break;
     }
 }
-
-?>

@@ -244,7 +244,9 @@
     color: #fff;
     background: var(--primary-color);
     border: none;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
 

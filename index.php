@@ -15,7 +15,6 @@ $products = get_products();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/reset.css">
     <title>TechnoShop</title>
@@ -85,14 +84,18 @@ $products = get_products();
     </section>
 
 <!-- Корзина -->
-<div class="cart-modal" id="cart-modal">
-<div class="modal-cart-content">
+<section class="carts none cart-modal" id="cart-modal">
+<div class="container container__cart">
+            <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h3 class="title__cart">Корзина</h3>
+            <div class="container-cartitem">
+                <div class="modal-cart-content">
 
+                </div>
 </div>
 </div>
-
-<?php debug($_SESSION); // session_destroy(); ?>
-
+</div>
+</section>
 
     <!-- Меню -->
 
@@ -182,7 +185,7 @@ $products = get_products();
                                 <p>SALE</p>
                             </div>
                             <?php endif; ?>
-                            <img src="img/<?= $product['img'] ?>" alt="">
+                            <img class="img__card" src="img/<?= $product['img'] ?>" alt="">
                         </div>
                         <div class="block__title">
                             <h3><?= $product['title'] ?></h3>
@@ -200,7 +203,7 @@ $products = get_products();
                                 <?php endif; ?>
                                 <p class="last__price"><?= $product['price'] ?></p>
                             </div>
-                            <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy add-to-cart" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
                 </div>
@@ -319,7 +322,8 @@ $products = get_products();
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
 

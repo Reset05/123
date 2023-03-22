@@ -13,7 +13,7 @@ require_once __DIR__ . '/index.phtml';
             <h3 class="title__cart">Корзина</h3>
             <?php foreach($_SESSION['cart'] as $id => $item): ?>
             <div class="container-cartitem">
-                <div data-id="0" class="cartitem">
+                <div data-id="<?php echo $id ?>" class="cartitem">
                     <div class="logoitem">
                     <img class="imgitem" src="img/<?php echo $item['img'] ?>" alt="">
                     </div>

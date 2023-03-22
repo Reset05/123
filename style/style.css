@@ -94,7 +94,7 @@
 
 .inp__search{
     width: 600px;
-    height: 50px;
+    height: 60px;
     border-radius: 50px;
     font-family: 'Comfortaa', cursive !important;
     font-weight: 800;
@@ -254,6 +254,7 @@
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    width: 100%;
 }
 
 .img__card{
@@ -291,7 +292,7 @@
 }
 
 .block__title h3{
-    font-size: 21px;
+    font-size: 18px;
     font-weight: 900;
 }
 

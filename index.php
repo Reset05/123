@@ -21,43 +21,45 @@ $products = get_products();
 </head>
 <body>
     <!-- Вход-->
-    <section class="modal__window modal__window__signin none">
-        <div class="container__window">
-            <div class="title__modal">
-                <h2>Вход</h2>
-            </div>
-            <div class="signin">
-                <div class="exit">
-                    <i class="fa-solid fa-xmark"></i>
+    <div class="modal-background none" id="modal-bg">
+        <div class="modal__window modal__window__signin none" id="modal-signin">
+            <div class="container__window">
+                <div class="title__modal">
+                    <h2>Вход</h2>
                 </div>
-                <form action="" method="post">
-                    <div class="block__form">
-                        <input class="inp__form" required type="text" name="login" id="">
-                        <p class="text__form">Логин</p>
+                <div class="signin">
+                    <div class="exit">
+                        <i class="fa-solid fa-xmark btn-exit"></i>
                     </div>
+                    <form action="" method="post">
+                        <div class="block__form">
+                            <input class="inp__form" required type="text" name="login" id="">
+                            <p class="text__form">Логин</p>
+                        </div>
 
-                    <div class="block__form">
-                        <input class="inp__form" required type="password" name="pass" id="">
-                        <p class="text__form">Пароль</p>
-                    </div>
+                        <div class="block__form">
+                            <input class="inp__form" required type="password" name="pass" id="">
+                            <p class="text__form">Пароль</p>
+                        </div>
 
-                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
-                </form>
+                        <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                    </form>
 
-                <p class="text__signup">Если у вас нет аккаунат, можете его <a class="link__reg" href="">зарегестрировать.</a></p>
+                    <p class="text__signup">Если у вас нет аккаунат, можете его <a class="link__reg" id="btn-reg">зарегестрировать.</a></p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Регистрация -->
-    <section class="modal__window modal__window__reg none">
+    <section class="modal__window modal__window__reg none" id="modal-signup">
         <div class="container__window">
             <div class="title__modal">
                 <h2>Регистрация</h2>
             </div>
             <div class="signin">
                 <div class="exit__reg">
-                    <i class="fa-solid fa-xmark"></i>
+                    <i class="fa-solid fa-xmark btn-exit"></i>
                 </div>
                 <form action="" method="post">
                     <div class="block__form">
@@ -78,7 +80,7 @@ $products = get_products();
                     <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
                 </form>
 
-                <p class="text__signup">Если у вас есть аккаунат, можете <a class="link__login" href="">войти в него.</a></p>
+                <p class="text__signup">Если у вас есть аккаунат, можете <a class="link__login" id="btn-log">войти в него.</a></p>
             </div>
         </div>
     </section>
@@ -135,7 +137,7 @@ $products = get_products();
            </div>
 
            <div class="login__cart">
-                <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">Вход / Регистрация</span></a>
+                <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>
                 <span> |  </span>
                 <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>
@@ -326,6 +328,7 @@ $products = get_products();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
 </body>
 </html>

@@ -269,6 +269,7 @@
     font-size: 21px;
     display: flex;
     justify-content: space-between;
+    height: 50px;
 }
 
 .block__desc{

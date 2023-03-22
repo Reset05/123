@@ -1,5 +1,5 @@
 <?php
-
+define('DIR', __DIR__);
 $host = 'localhost';
 $db = 'catalog';
 $user = 'root';

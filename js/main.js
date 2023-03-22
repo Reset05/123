@@ -1,26 +1,33 @@
 $(function() {
 
-    function showCart(cart){
+    function showCart(cart) {
         $('#cart-modal .modal-cart-content').html(cart);
+        $('#cart-modal').modal();
+
+        let cartQty = $('#modal-cart-qty').text() ? $('#modal-cart-qty').text() : 0;
+        $('.mini-cart-qty').text(cartQty);
     }
 
-$('.btn__buy').on('click', function(e) {
-    e.preventDefault();
-    let id = $(this).data('id');
+    $('.add-to-cart').on('click', function (e) {
+        e.preventDefault();
+        let id = $(this).data('id');
 
-    $.ajax({
-        url: 'cart.php',
-        type: 'GET',
-        data: {cart: 'add', id: id},
-        dataType: 'json',
-        success: function(res){
-            if(res.code == 'ok') {
-                showCart(res.answer)
-            } else {
-                alert(res.answer)
+        $.ajax({
+            url: 'cart.php',
+            type: 'GET',
+            data: {cart: 'add', id: id},
+            dataType: 'json',
+            success: function (res) {
+                if (res.code == 'ok') {
+                    showCart(res.answer);
+                } else {
+                    alert(res.answer);
+                }
+            },
+            error: function () {
+                alert('Error');
             }
-        }
+        });
     });
-});
 
 });

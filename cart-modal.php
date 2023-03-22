@@ -1,10 +1,7 @@
 <?php 
 session_start();
 require_once __DIR__ . '/db/db.php';
-require_once __DIR__ . '/db/funcs.php';
-require_once __DIR__ . '/cart.php';
-require_once __DIR__ . '/index.phtml';
-
+require_once __DIR__ . '/db/funcs.php'
 ?>
 <section class="carts none">
         <div class="container container__cart">

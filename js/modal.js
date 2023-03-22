@@ -7,6 +7,17 @@ const modalSignup = document.querySelector('#modal-signup')
 const btnLog = document.querySelector('#btn-log')
 const btnExit = document.querySelectorAll('.btn-exit')
 
+function setModalActive(arr){
+    arr.forEach(element => {
+        element.classList.remove('none')
+    });
+}
+function setModalSacred(arr){
+    arr.forEach(element => {
+        element.classList.add('none')
+    });
+}
+
 btnOpen.onclick = (e)=>{
     e.preventDefault()
     
@@ -35,15 +46,4 @@ btnOpen.onclick = (e)=>{
             body.classList.remove('body-freeze')
         }
     }
-}
-
-function setModalActive(arr){
-    arr.forEach(element => {
-        element.classList.remove('none')
-    });
-}
-function setModalSacred(arr){
-    arr.forEach(element => {
-        element.classList.add('none')
-    });
 }

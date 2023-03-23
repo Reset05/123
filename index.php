@@ -3,6 +3,7 @@ error_reporting(-1);
 session_start();
 require_once __DIR__ . '/pages/db/db.php';
 require_once __DIR__ . '/pages/db/funcs.php';
+
 $products = get_products();
 ?>
 
@@ -274,18 +275,6 @@ $products = get_products();
                 </div>
 
                 <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                 <div class="card__news">
                     <div class="img__news">
                         <img src="" alt="">
                     </div>

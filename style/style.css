@@ -586,6 +586,7 @@
     font-family: 'Sofia Sans Semi Condensed', sans-serif;
     font-weight: 300;
     text-align: center;
+    cursor: pointer;
 }
 
 .text__signup a{

@@ -5,6 +5,7 @@ session_start();
 require_once __DIR__ . '/pages/db/db.php';
 require_once __DIR__ . '/pages/db/funcs.php';
 
+
 if (isset($_GET['cart'])) {
     switch ($_GET['cart']) {
         case 'add':
@@ -16,14 +17,14 @@ if (isset($_GET['cart'])) {
             } else {
                 add_to_cart($product);
                 ob_start();
-                require __DIR__ . '/cart-modal.php';
+                include __DIR__ . '/cart-modal.php';
                 $cart = ob_get_clean();
                 echo json_encode(['code' => 'ok', 'answer' => $cart]);
             }
             break;
 
         case 'show':
-            require __DIR__ . '/cart-modal.php';
+            include __DIR__ . '/cart-modal.php';
             break;
     }
 }

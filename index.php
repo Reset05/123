@@ -77,6 +77,9 @@ $products = get_products();
                         <input class="inp__form" required type="text" name="pass" id="">
                         <p class="text__form">Почта</p>
                     </div>
+                    <div class="block__error">
+                        <p>Некорректный Email</p>
+                    </div>
 
                     <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
                 </form>

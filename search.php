@@ -183,6 +183,64 @@ if (isset($_GET['query'])) {
             </div>
             <div class="products">
                 <div class="block__products">
+                    <?php
+// Подключение к базе данных
+$db = mysqli_connect("localhost", "root", "root", "catalog");
+
+// Получаем значение GET-параметра category
+$category_id = isset($_GET['category']) ? (int)$_GET['category'] : 0;
+
+// Получаем список товаров из базы данных с учетом фильтра по категории
+if ($category_id > 0) {
+    $products = get_products_by_category($db, $category_id);
+} else {
+    $products = get_all_products($db);
+}
+
+// Отображаем список товаров
+foreach ($products as $product) {
+    // Отображение товара
+    echo '<div class="card__border card__filter">';
+    echo '<div class="card">';
+    echo '<div class="img__card">';
+    echo '<img class="img__card" src="img/' . $product['img'] . '" alt="">';
+    echo '</div>';
+    echo '<div class="block__title">';
+    echo '<h3>' . $product['title'] . '</h3>';
+    echo '</div>';
+    echo '<div class="block__desc">';
+    echo '<p>' . $product['content'] . '</p>';
+    echo '</div>';
+    echo '<div class="block__score">';
+    echo '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>';
+    echo '</div>';
+    echo '<div class="block__curr">';
+    echo '<div class="block__price">';
+    echo '<p class="last__price">' . $product['price'] . '</p>';
+    echo '</div>';
+    echo '<a href="?cart=add&id=' . $product['id'] . '" class="btn__buy add-to-cart" data-id="' . $product['id'] . '"><i class="fa-solid fa-cart-shopping"></i></a>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+}
+
+// Функция получения списка товаров по категории
+function get_products_by_category($db, $category_id) {
+    $category_id = intval($category_id);
+    $sql = "SELECT * FROM products WHERE category_id = $category_id";
+    $result = mysqli_query($db, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+// Функция получения всех товаров
+function get_all_products($db) {
+    $sql = "SELECT * FROM products";
+    $result = mysqli_query($db, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+?>
                 <?php foreach ($results as $product): ?>
                 <div class="card__border card__filter">
                     <div class="card">

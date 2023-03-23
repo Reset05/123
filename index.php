@@ -131,8 +131,8 @@ $products = get_products();
             </div>
 
            <div class="form">
-                <form action="">
-                    <input class="inp__search" type="text" name="" id="" placeholder="Введите здесь">
+           <form method="GET" action="search.php">
+                    <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
            </div>

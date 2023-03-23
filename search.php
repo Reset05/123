@@ -1,9 +1,8 @@
 <?php
-error_reporting(-1);
-session_start();
-include_once __DIR__ . '/db/db.php'; 
-include_once __DIR__ . '/db/funcs.php';
-$products = get_products();
+include_once __DIR__ . '/pages/db/db.php';
+include_once __DIR__ . '/pages/db/funcs.php';
+
+// Получение поискового запроса
 if (isset($_GET['query'])) {
     // Поиск товаров по запросу
     $query = $_GET['query'];
@@ -15,6 +14,7 @@ if (isset($_GET['query'])) {
   }
 ?>
 
+<!-- Вывод результатов поиска -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -136,7 +136,7 @@ if (isset($_GET['query'])) {
             </div>
 
            <div class="form">
-           <form method="GET" action="../search.php">
+           <form method="GET" action="search.php">
                     <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -183,9 +183,7 @@ if (isset($_GET['query'])) {
             </div>
             <div class="products">
                 <div class="block__products">
-
-                <?php if(!empty($products)): ?>
-                <?php foreach($products as $product): ?>
+                <?php foreach ($results as $product): ?>
                 <div class="card__border card__filter">
                     <div class="card">
                         <div class="img__card">
@@ -208,8 +206,7 @@ if (isset($_GET['query'])) {
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                <?php endforeach ?>
             </div>
         </div>
     </section>

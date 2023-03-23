@@ -143,32 +143,30 @@ include_once __DIR__ . '/pages/db/funcs.php';
 <main>
     <section>
         <div class="container container__shop">
-            <div class="filter">
+        <div class="filter">
                 <h3>Поиск</h3>
+                <form action="search-category.php" method="GET">
                 <div class="search">
-                    <form action="">
-                        <input class="inp__search__filter" type="text" name="" id="" placeholder="Введите здесь">
+                        <input class="inp__search__filter" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
-                    </form>
                 </div>
                 <h3>Категории</h3>
                 <div class="category__filter">
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">ТВ</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Консоли</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Комплектующие для ПК</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Смартфоны и Фототехника</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Компьютеры и ноутбуки</label>
-                    </div>
+                <?php
+                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $sql = "SELECT * FROM categories";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="category">';
+                        echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
+                        echo '<label>';
+                        echo $row['title'];
+                        echo '</label>';
+                        echo '</div>';
+                    }
+?>
                 </div>
+                </form>
             </div>
             <div class="products">
                 <div class="block__products">
@@ -198,7 +196,7 @@ if (isset($_GET['query'])) {
     <h3><?= $product['title'] ?></h3>
     </div>
     <div class="block__desc">
-    <p><?= $product['content'] ?>'</p>
+    <p><?= $product['content'] ?></p>
     </div>
     <div class="block__score">
     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
@@ -238,9 +236,9 @@ if (isset($_GET['query'])) {
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="pages/js/cart.js"></script>
+    <script src="pages/js/main.js"></script>
+    <script src="pages/js/modal.js"></script>
 
 </body>
 </html>

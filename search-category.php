@@ -145,91 +145,69 @@ include_once __DIR__ . '/pages/db/funcs.php';
         <div class="container container__shop">
             <div class="filter">
                 <h3>Поиск</h3>
+                <form action="search-category.php">
                 <div class="search">
-                    <form action="">
                         <input class="inp__search__filter" type="text" name="" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
-                    </form>
                 </div>
                 <h3>Категории</h3>
                 <div class="category__filter">
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">ТВ</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Консоли</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Комплектующие для ПК</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Смартфоны и Фототехника</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Компьютеры и ноутбуки</label>
-                    </div>
+                <?php
+                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $sql = "SELECT * FROM categories";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="category">';
+                        echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
+                        echo '<label>';
+                        echo $row['title'];
+                        echo '</label>';
+                        echo '</div>';
+                    }
+?>
                 </div>
+                </form>
             </div>
             <div class="products">
                 <div class="block__products">
-                    <?php
-                    // Подключение к базе данных
-                    $db = mysqli_connect("localhost", "root", "root", "catalog");
-                    
-                    // Получаем значение GET-параметра category
-                    $category_id = isset($_GET['category']) ? (int)$_GET['category'] : 0;
-                    
-                    // Получаем список товаров из базы данных с учетом фильтра по категории
-                    if ($category_id > 0) {
-                        $products = get_products_by_category($db, $category_id);
-                    } else {
-                        $products = get_all_products($db);
-                    }
-                    
-                    // Отображаем список товаров
-                    foreach ($products as $product) {
-                        // Отображение товара
-                        echo '<div class="card__border card__filter">';
-                        echo '<div class="card">';
-                        echo '<div class="img__card">';
-                        echo '<img class="img__card" src="img/' . $product['img'] . '" alt="">';
-                        echo '</div>';
-                        echo '<div class="block__title">';
-                        echo '<h3>' . $product['title'] . '</h3>';
-                        echo '</div>';
-                        echo '<div class="block__desc">';
-                        echo '<p>' . $product['content'] . '</p>';
-                        echo '</div>';
-                        echo '<div class="block__score">';
-                        echo '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>';
-                        echo '</div>';
-                        echo '<div class="block__curr">';
-                        echo '<div class="block__price">';
-                        echo '<p class="last__price">' . $product['price'] . '</p>';
-                        echo '</div>';
-                        echo '<a href="?cart=add&id=' . $product['id'] . '" class="btn__buy add-to-cart" data-id="' . $product['id'] . '"><i class="fa-solid fa-cart-shopping"></i></a>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
-                    
-                    // Функция получения списка товаров по категории
-                    function get_products_by_category($db, $category_id) {
-                        $category_id = intval($category_id);
-                        $sql = "SELECT * FROM products WHERE category_id = $category_id";
-                        $result = mysqli_query($db, $sql);
-                        $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                        return $products;
-                    }
-                    
-                    // Функция получения всех товаров
-                    function get_all_products($db) {
-                        $sql = "SELECT * FROM products";
-                        $result = mysqli_query($db, $sql);
-                        $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                        return $products;
-                    }
-                    ?>
+                <?php
+        $conn = mysqli_connect("localhost", "root", "root", "catalog");
+        if (isset($_GET['category'])) {
+            $categories = $_GET['category'];
+            $categories = implode(',', $categories);
+        
+            $sql = "SELECT * FROM products WHERE category_id IN ($categories)";
+            $result = mysqli_query($conn, $sql);
+            // Обработка результата запроса
+        }
+          if ($result && mysqli_num_rows($result) > 0) {
+            // Отображаем товары
+            while ($products = mysqli_fetch_assoc($result)) {
+                echo ' <div class="card__border card__filter">';
+                echo '<div class="card">';
+                echo '<div class="img__card">';
+                echo '<img class="img__card" src="img/' . $products['img'] . '" alt="">';
+                echo '</div>';
+                echo '<div class="block__title">';
+                echo '<h3> '. $products['title'] .'</h3>';
+                echo '</div>';
+                echo '<div class="block__desc">';
+                echo '<p> '. $products['content'] .'</p>';
+                echo '</div>';
+                echo '<div class="block__score">';
+                echo '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>';
+                echo '</div>';
+                echo '<div class="block__curr">';
+                echo '<div class="block__price">';
+                echo '<p class="last__price">'. $products['price'] .'</p>';
+                echo '</div>';
+                echo '<a href="?cart=add&id='. $products['id'] .'" class="btn__buy add-to-cart" data-id="'. $products['id'] .'"><i class="fa-solid fa-cart-shopping"></i></a>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+        }        
+?>
 
         </div>
     </section>
@@ -256,9 +234,9 @@ include_once __DIR__ . '/pages/db/funcs.php';
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="pages/js/cart.js"></script>
+    <script src="pages/js/main.js"></script>
+    <script src="pages/js/modal.js"></script>
 
 </body>
 </html>

@@ -130,7 +130,7 @@ $products = get_products();
         <div class="container container__search">
 
             <div class="shop__category">
-                <a class="link__sc" href=""><i class="fa-solid fa-bars-staggered"></i>Категории Магазина</a>
+                <a class="link__sc" href="pages/shop.php"><i class="fa-solid fa-bars-staggered"></i>Категории Магазина</a>
             </div>
 
            <div class="form">

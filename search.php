@@ -1,17 +1,6 @@
 <?php
 include_once __DIR__ . '/pages/db/db.php';
 include_once __DIR__ . '/pages/db/funcs.php';
-
-// Получение поискового запроса
-if (isset($_GET['query'])) {
-    // Поиск товаров по запросу
-    $query = $_GET['query'];
-    $stmt = $pdo->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
-    $stmt->execute(["%$query%", "%$query%", "%$query%"]);
-    $results = $stmt->fetchAll();
-  } else {
-    $results = [];
-  }
 ?>
 
 <!-- Вывод результатов поиска -->
@@ -185,6 +174,7 @@ if (isset($_GET['query'])) {
                 <div class="block__products">
                     <?php
 // Подключение к базе данных
+// Подключение к базе данных
 $db = mysqli_connect("localhost", "root", "root", "catalog");
 
 // Получаем значение GET-параметра category
@@ -197,8 +187,24 @@ if ($category_id > 0) {
     $products = get_all_products($db);
 }
 
+// Получаем результаты поиска
+if (isset($_GET['query'])) {
+    $query = $_GET['query'];
+    $stmt = $db->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
+    $stmt->execute(["%$query%", "%$query%", "%$query%"]);
+    $search_results = $stmt->fetchAll();
+} else {
+    $search_results = [];
+}
+
+// Объединяем массивы и сортируем по названию товара
+$merged_products = array_merge($products, $search_results);
+usort($merged_products, function($a, $b) {
+    return strcmp($a['title'], $b['title']);
+});
+
 // Отображаем список товаров
-foreach ($products as $product) {
+foreach ($merged_products as $product) {
     // Отображение товара
     echo '<div class="card__border card__filter">';
     echo '<div class="card">';
@@ -241,31 +247,6 @@ function get_all_products($db) {
     return $products;
 }
 ?>
-                <?php foreach ($results as $product): ?>
-                <div class="card__border card__filter">
-                    <div class="card">
-                        <div class="img__card">
-                            <img class="img__card" src="../img/<?= $product['img'] ?>" alt="">
-                        </div>
-                        <div class="block__title">
-                            <h3><?= $product['title'] ?></h3>
-                        </div>
-                        <div class="block__desc">
-                            <p><?= $product['content'] ?></p>
-                        </div>
-                        <div class="block__score">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                        </div>
-                        <div class="block__curr">
-                            <div class="block__price">
-                                <p class="last__price"><?= $product['price'] ?></p>
-                            </div>
-                            <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy add-to-cart" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach ?>
-            </div>
         </div>
     </section>
 </main>

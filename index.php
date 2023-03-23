@@ -155,10 +155,10 @@ $products = get_products();
 
             <div class="block__category">
                 <a href="search.php?category=2"><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="?category=1"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="?category=3"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="?category=4"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="?category=5"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="search.php?category=1"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="search.php?category=3"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="search.php?category=4"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="search.php?category=5"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
             </div>
 
             <div class="block__banner">

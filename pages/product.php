@@ -1,3 +1,11 @@
+<?php
+error_reporting(-1);
+session_start();
+include_once __DIR__ . '/db/db.php'; 
+include_once __DIR__ . '/db/funcs.php';
+$products = get_products();
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -77,33 +85,18 @@
     </section>
 
 <!-- Корзина -->
-    <section class="carts none">
-        <div class="container container__cart">
+<section class="carts none cart-modal" id="cart-modal">
+<div class="container container__cart">
             <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
             <h3 class="title__cart">Корзина</h3>
             <div class="container-cartitem">
-                <div data-id="0" class="cartitem">
-                    <div class="logoitem">
-                        <img class="imgitem" src="" alt="">
-                    </div>
-                    <div class="textitem">
-                        <h3>Title</h3>
-                        <div class="counter">
-                            <i data-action="minus" class="minus fa-regular fa-square-minus"></i>
-                            <p data-counter class="count">1</p>
-                            <i data-action="plus" class="plus fa-regular fa-square-plus"></i>
-                        </div>
-                        <p class="price__cart">Price</p>
-                    </div>
+                <div class="modal-cart-content">
+
                 </div>
-            </div>
-            <div class="title__total">Итого:</div>
-    
-            <div class="btn__buy__cart">
-                <button>Купить</button>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+</section>
     
     <section class="menu">
         <!-- Меню с ссылками на разделы сайта -->
@@ -143,7 +136,7 @@
            <div class="login__cart">
                 <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">Вход / Регистрация</span></a>
                 <span> |  </span>
-                <a class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>
 
         </div>
@@ -151,27 +144,75 @@
 
 
 <main>
-
     <section>
-        <div class="container container__item__news">
+        <div class="container container__product">
 
-            <div class="image__news">
-                <img src="" alt="">
+            <!-- Фото с товаром -->
+            <div class="photo__product">
+                <div class="oversize__photo">
+                    <img src="" alt="">
+                </div>
+                <div class="minisize__photo">
+                    <div class="img"></div>
+                    <div class="img"></div>
+                    <div class="img"></div>
+                </div>
             </div>
-            <div class="describe__news">
-                <div class="title__news">
+
+            <div class="desc__product">
+                <div class="title__product">
                     <h2>Title</h2>
                 </div>
-                <div class="describe__news">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium, soluta praesentium blanditiis necessitatibus accusamus quis, earum optio quae tempora, culpa inventore fugit asperiores qui unde sapiente ipsum doloremque doloribus! Nemo?</p>
+                <div class="score__product">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <div class="desc">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto facilis nostrum fugit suscipit culpa porro perferendis laborum rem odit voluptatibus tempore blanditiis quaerat in est, voluptates expedita dicta aut repellat.</p>
+                </div>
+                <div class="block__buy">
+                    <div class="price__product">
+                        <p>$300</p>
+                    </div>
+                    <button class="btn__buy__product">Купить</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <div class="container container__characteristic">
+            <div class="header">
+                <a href="">Характеристики</a>
+                <span> | </span>
+                <a href="">Отзывы</a>
+            </div>
+            <div class="describe">
+                <div class="type__desc">
+                    <h3>Бренд</h3>
+                    <p>Название бренда</p>
+                </div>
+                <div class="type__desc">
+                    <h3>Тип</h3>
+                    <p>Название типа</p>
+                </div>
+                <div class="type__desc">
+                    <h3>Модель</h3>
+                    <p>Название модели</p>
+                </div>
+                <div class="type__desc">
+                    <h3>Цвет</h3>
+                    <p>Название цвета</p>
+                </div>
+                <div class="type__desc">
+                    <h3>Гарантия</h3>
+                    <p>Срок гарантии</p>
                 </div>
             </div>
         </div>
-
     </section>
 
 </main>
-
 
 <footer>
     
@@ -188,10 +229,14 @@
 
 </footer>
 
+
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
-
-    <script src="/js/cart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
 </body>
 </html>

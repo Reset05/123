@@ -1,3 +1,11 @@
+<?php
+error_reporting(-1);
+session_start();
+include_once __DIR__ . '/db/db.php'; 
+include_once __DIR__ . '/db/funcs.php';
+$products = get_products();
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -77,33 +85,18 @@
     </section>
 
 <!-- Корзина -->
-    <section class="carts none">
-        <div class="container container__cart">
+<section class="carts none cart-modal" id="cart-modal">
+<div class="container container__cart">
             <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
             <h3 class="title__cart">Корзина</h3>
             <div class="container-cartitem">
-                <div data-id="0" class="cartitem">
-                    <div class="logoitem">
-                        <img class="imgitem" src="" alt="">
-                    </div>
-                    <div class="textitem">
-                        <h3>Title</h3>
-                        <div class="counter">
-                            <i data-action="minus" class="minus fa-regular fa-square-minus"></i>
-                            <p data-counter class="count">1</p>
-                            <i data-action="plus" class="plus fa-regular fa-square-plus"></i>
-                        </div>
-                        <p class="price__cart">Price</p>
-                    </div>
+                <div class="modal-cart-content">
+
                 </div>
-            </div>
-            <div class="title__total">Итого:</div>
-    
-            <div class="btn__buy__cart">
-                <button>Купить</button>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+</section>
     
     <section class="menu">
         <!-- Меню с ссылками на разделы сайта -->
@@ -143,7 +136,7 @@
            <div class="login__cart">
                 <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">Вход / Регистрация</span></a>
                 <span> |  </span>
-                <a class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>
 
         </div>
@@ -182,133 +175,32 @@
             <div class="products">
                 <div class="block__products">
 
-                    <div class="card__border card__filter">
-                        <div class="card">
-                            <div class="img__card">
-                                <img src="" alt="">
+                <?php if(!empty($products)): ?>
+                <?php foreach($products as $product): ?>
+                <div class="card__border card__filter">
+                    <div class="card">
+                        <div class="img__card">
+                            <img class="img__card" src="../img/<?= $product['img'] ?>" alt="">
+                        </div>
+                        <div class="block__title">
+                            <h3><?= $product['title'] ?></h3>
+                        </div>
+                        <div class="block__desc">
+                            <p><?= $product['content'] ?></p>
+                        </div>
+                        <div class="block__score">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="block__curr">
+                            <div class="block__price">
+                                <p class="last__price"><?= $product['price'] ?></p>
                             </div>
-                            <div class="block__title">
-                                <h3>Title</h3>
-                            </div>
-                            <div class="block__desc">
-                                <p>Description</p>
-                            </div>
-                            <div class="block__score">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="block__curr">
-                                <p class="price">300$</p>
-                                <button class="btn__buy"><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
+                            <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy add-to-cart" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
-
-                    <div class="card__border">
-                        <div class="card">
-                            <div class="img__card">
-                                <img src="" alt="">
-                            </div>
-                            <div class="block__title">
-                                <h3>Title</h3>
-                            </div>
-                            <div class="block__desc">
-                                <p>Description</p>
-                            </div>
-                            <div class="block__score">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="block__curr">
-                                <p class="price">300$</p>
-                                <button class="btn__buy"><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card__border">
-                        <div class="card">
-                            <div class="img__card">
-                                <img src="" alt="">
-                            </div>
-                            <div class="block__title">
-                                <h3>Title</h3>
-                            </div>
-                            <div class="block__desc">
-                                <p>Description</p>
-                            </div>
-                            <div class="block__score">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="block__curr">
-                                <p class="price">300$</p>
-                                <button class="btn__buy"><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card__border card__filter">
-                        <div class="card">
-                            <div class="img__card">
-                                <img src="" alt="">
-                            </div>
-                            <div class="block__title">
-                                <h3>Title</h3>
-                            </div>
-                            <div class="block__desc">
-                                <p>Description</p>
-                            </div>
-                            <div class="block__score">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="block__curr">
-                                <p class="price">300$</p>
-                                <button class="btn__buy"><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card__border card__filter">
-                        <div class="card">
-                            <div class="img__card">
-                                <img src="" alt="">
-                            </div>
-                            <div class="block__title">
-                                <h3>Title</h3>
-                            </div>
-                            <div class="block__desc">
-                                <p>Description</p>
-                            </div>
-                            <div class="block__score">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="block__curr">
-                                <p class="price">300$</p>
-                                <button class="btn__buy"><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card__border card__filter">
-                        <div class="card">
-                            <div class="img__card">
-                                <img src="" alt="">
-                            </div>
-                            <div class="block__title">
-                                <h3>Title</h3>
-                            </div>
-                            <div class="block__desc">
-                                <p>Description</p>
-                            </div>
-                            <div class="block__score">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="block__curr">
-                                <p class="price">300$</p>
-                                <button class="btn__buy"><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
             </div>
         </div>
     </section>
@@ -333,8 +225,11 @@
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
-
-    <script src="/js/cart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
 </body>
 </html>

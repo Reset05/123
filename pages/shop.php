@@ -157,29 +157,29 @@ if (isset($_GET['query'])) {
             <div class="filter">
                 <h3>Поиск</h3>
                 <div class="search">
-                    <form action="">
+                <form action="../search-category.php">
+                <div class="search">
                         <input class="inp__search__filter" type="text" name="" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
-                    </form>
                 </div>
                 <h3>Категории</h3>
                 <div class="category__filter">
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">ТВ</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Консоли</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Комплектующие для ПК</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Смартфоны и Фототехника</label>
-                    </div>
-                    <div class="category">
-                        <input type="checkbox" name="" id=""> <label for="">Компьютеры и ноутбуки</label>
-                    </div>
+                <?php
+                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $sql = "SELECT * FROM categories";
+                    $result = mysqli_query($conn, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="category">';
+                        echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
+                        echo '<label>';
+                        echo $row['title'];
+                        echo '</label>';
+                        echo '</div>';
+                    }
+?>
                 </div>
+                </div>
+                </form>
             </div>
             <div class="products">
                 <div class="block__products">

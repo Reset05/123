@@ -102,7 +102,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
 
             <div class="logo__category">
                 <div class="logo">
-                    <a href="/index.html"><h2 class="logo__text">TechnoShop</h2></a>
+                    <a href="/index.php"><h2 class="logo__text">TechnoShop</h2></a>
                 </div>
                 <div class="category__menu">
                     <a class="link__menu" href="">Главная</a>
@@ -155,7 +155,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {

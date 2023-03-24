@@ -143,11 +143,11 @@ include_once __DIR__ . '/pages/db/funcs.php';
 <main>
     <section>
         <div class="container container__shop">
-            <div class="filter">
+        <div class="filter">
                 <h3>Поиск</h3>
-                <form action="search-category.php">
+                <form action="search-category.php" method="GET">
                 <div class="search">
-                        <input class="inp__search__filter" type="text" name="" id="" placeholder="Введите здесь">
+                        <input class="inp__search__filter" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
                 </div>
                 <h3>Категории</h3>
@@ -171,53 +171,62 @@ include_once __DIR__ . '/pages/db/funcs.php';
             <div class="products">
                 <div class="block__products">
                 <?php
-        $conn = mysqli_connect("localhost", "root", "root", "catalog");
+// Подключение к базе данных
+$db = mysqli_connect("localhost", "root", "root", "catalog");
 
-        if (isset($_GET['category'])) {
-            $categories = $_GET['category'];
-            $categories = implode(',', $categories);
-        
-            $sql = "SELECT * FROM products WHERE category_id IN ($categories)";
-            $result = mysqli_query($conn, $sql);
-        
-            // Проверка на ошибки выполнения запроса
-            if (!$result) {
-                die('Ошибка выполнения запроса: ' . mysqli_error($conn));
-            }
-        
-            if (mysqli_num_rows($result) > 0) {
-                // Отображаем товары
-                while ($products = mysqli_fetch_assoc($result)) {
-                    echo '<div class="card__border card__filter">';
-                    echo '<div class="card">';
-                    echo '<div class="img__card">';
-                    echo '<img class="img__card" src="img/' . $products['img'] . '" alt="">';
-                    echo '</div>';
-                    echo '<div class="block__title">';
-                    echo '<h3>' . $products['title'] . '</h3>';
-                    echo '</div>';
-                    echo '<div class="block__desc">';
-                    echo '<p>' . $products['content'] . '</p>';
-                    echo '</div>';
-                    echo '<div class="block__score">';
-                    echo '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>';
-                    echo '</div>';
-                    echo '<div class="block__curr">';
-                    echo '<div class="block__price">';
-                    echo '<p class="last__price">' . $products['price'] . '</p>';
-                    echo '</div>';
-                    echo '<a href="?cart=add&id=' . $products['id'] . '" class="btn__buy add-to-cart" data-id="' . $products['id'] . '"><i class="fa-solid fa-cart-shopping"></i></a>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo 'Товаров не найдено';
-            }
-        } else {
-            echo 'Не указаны категории для поиска товаров';
-        }
-        
+// Получаем значение GET-параметра category
+$category_id = isset($_GET['category']) ? (int)$_GET['category'] : 0;
+
+// Получаем список товаров из базы данных с учетом фильтра по категории
+if ($category_id > 0) {
+    $products = get_products_by_category($db, $category_id);
+} else {
+    $products = get_all_products($db);
+}
+
+// Отображаем список товаров
+foreach ($products as $product) {
+    // Отображение товара
+    echo '<div class="card__border card__filter">';
+    echo '<div class="card">';
+    echo '<div class="img__card">';
+    echo '<img class="img__card" src="img/' . $product['img'] . '" alt="">';
+    echo '</div>';
+    echo '<div class="block__title">';
+    echo '<h3>' . $product['title'] . '</h3>';
+    echo '</div>';
+    echo '<div class="block__desc">';
+    echo '<p>' . $product['content'] . '</p>';
+    echo '</div>';
+    echo '<div class="block__score">';
+    echo '<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>';
+    echo '</div>';
+    echo '<div class="block__curr">';
+    echo '<div class="block__price">';
+    echo '<p class="last__price">' . $product['price'] . '</p>';
+    echo '</div>';
+    echo '<a href="?cart=add&id=' . $product['id'] . '" class="btn__buy add-to-cart" data-id="' . $product['id'] . '"><i class="fa-solid fa-cart-shopping"></i></a>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+}
+
+// Функция получения списка товаров по категории
+function get_products_by_category($db, $category_id) {
+    $category_id = intval($category_id);
+    $sql = "SELECT * FROM products WHERE category_id = $category_id";
+    $result = mysqli_query($db, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+// Функция получения всех товаров
+function get_all_products($db) {
+    $sql = "SELECT * FROM products";
+    $result = mysqli_query($db, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
 ?>
 
         </div>

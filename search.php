@@ -102,7 +102,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
 
             <div class="logo__category">
                 <div class="logo">
-                    <a href="/index.html"><h2 class="logo__text">TechnoShop</h2></a>
+                    <a href="/index.php"><h2 class="logo__text">TechnoShop</h2></a>
                 </div>
                 <div class="category__menu">
                     <a class="link__menu" href="">Главная</a>

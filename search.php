@@ -175,7 +175,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                     <?php
 // Подключение к базе данных
 // Подключение к базе данных
-$db = mysqli_connect("localhost", "root", "root", "catalog");
+$db = mysqli_connect("localhost", "root", "", "catalog");
 
 // Получаем результаты поиска
 if (isset($_GET['query'])) {

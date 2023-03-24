@@ -155,7 +155,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -173,7 +173,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
             <div class="products">
                 <div class="block__products">
                 <?php
-        $conn = mysqli_connect("localhost", "root", "root", "catalog");
+        $conn = mysqli_connect("localhost", "root", "", "catalog");
 
         if (isset($_GET['category'])) {
             $categories = $_GET['category'];

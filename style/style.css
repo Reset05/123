@@ -724,6 +724,10 @@
 
 /* Product */
 
+.products{
+    width: 100%;
+}
+
 .container__product{
     padding: 50px 5%;
     display: flex;

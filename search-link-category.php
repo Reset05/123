@@ -155,7 +155,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
@@ -174,7 +174,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <div class="block__products">
                 <?php
 // Подключение к базе данных
-$db = mysqli_connect("localhost", "root", "root", "catalog");
+$db = mysqli_connect("localhost", "root", "", "catalog");
 
 // Получаем значение GET-параметра category
 $category_id = isset($_GET['category']) ? (int)$_GET['category'] : 0;

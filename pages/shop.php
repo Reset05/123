@@ -167,7 +167,7 @@ if (isset($_GET['query'])) {
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "root", "catalog");
+                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
                     $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {

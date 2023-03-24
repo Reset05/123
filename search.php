@@ -155,9 +155,8 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($conn, $sql);
+                    $result = mysqli_query($db, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -173,14 +172,11 @@ include_once __DIR__ . '/pages/db/funcs.php';
             <div class="products">
                 <div class="block__products">
                     <?php
-// Подключение к базе данных
-// Подключение к базе данных
-$db = mysqli_connect("localhost", "root", "", "catalog");
 
 // Получаем результаты поиска
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
-    $stmt = $pdo->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
+    $stmt = $db->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
     $stmt->execute(["%$query%", "%$query%", "%$query%"]);
     $search_results = $stmt->fetchAll();
 } else {

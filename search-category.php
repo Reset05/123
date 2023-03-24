@@ -157,7 +157,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <?php
                     $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($conn, $sql);
+                    $result = mysqli_query($db, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -173,14 +173,13 @@ include_once __DIR__ . '/pages/db/funcs.php';
             <div class="products">
                 <div class="block__products">
                 <?php
-        $conn = mysqli_connect("localhost", "root", "", "catalog");
 
         if (isset($_GET['category'])) {
             $categories = $_GET['category'];
             $categories = implode(',', $categories);
         
             $sql = "SELECT * FROM products WHERE category_id IN ($categories)";
-            $result = mysqli_query($conn, $sql);
+            $result = mysqli_query($db, $sql);
         
             // Проверка на ошибки выполнения запроса
             if (!$result) {

@@ -155,9 +155,8 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($conn, $sql);
+                    $result = mysqli_query($db, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -173,9 +172,6 @@ include_once __DIR__ . '/pages/db/funcs.php';
             <div class="products">
                 <div class="block__products">
                 <?php
-// Подключение к базе данных
-$db = mysqli_connect("localhost", "root", "", "catalog");
-
 // Получаем значение GET-параметра category
 $category_id = isset($_GET['category']) ? (int)$_GET['category'] : 0;
 

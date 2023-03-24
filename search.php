@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/pages/db/db.php';
-include_once __DIR__ . '/pages/db/funcs.php';
+include_once 'db/db.php';
+include_once 'db/funcs.php';
 ?>
 
 <!-- Вывод результатов поиска -->
@@ -156,7 +156,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <div class="category__filter">
                 <?php
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($db, $sql);
+                    $result = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -176,7 +176,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
 // Получаем результаты поиска
 if (isset($_GET['query'])) {
     $query = $_GET['query'];
-    $stmt = $db->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
     $stmt->execute(["%$query%", "%$query%", "%$query%"]);
     $search_results = $stmt->fetchAll();
 } else {
@@ -234,9 +234,9 @@ if (isset($_GET['query'])) {
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="pages/js/cart.js"></script>
-    <script src="pages/js/main.js"></script>
-    <script src="pages/js/modal.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
 </body>
 </html>

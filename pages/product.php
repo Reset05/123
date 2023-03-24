@@ -1,8 +1,8 @@
 <?php
 error_reporting(-1);
 session_start();
-include_once __DIR__ . '/db/db.php'; 
-include_once __DIR__ . '/db/funcs.php';
+include_once '../db/db.php'; 
+include_once '../db/funcs.php';
 $products = get_products();
 ?>
 
@@ -234,9 +234,9 @@ $products = get_products();
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/modal.js"></script>
 
 </body>
 </html>

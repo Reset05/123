@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/pages/db/db.php';
-include_once __DIR__ . '/pages/db/funcs.php';
+include_once 'db/db.php';
+include_once 'db/funcs.php';
 ?>
 
 <!-- Вывод результатов поиска -->
@@ -155,9 +155,8 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <h3>Категории</h3>
                 <div class="category__filter">
                 <?php
-                    $conn = mysqli_connect("localhost", "root", "", "catalog");
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($db, $sql);
+                    $result = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -179,11 +178,11 @@ include_once __DIR__ . '/pages/db/funcs.php';
             $categories = implode(',', $categories);
         
             $sql = "SELECT * FROM products WHERE category_id IN ($categories)";
-            $result = mysqli_query($db, $sql);
+            $result = mysqli_query($mysqli, $sql);
         
             // Проверка на ошибки выполнения запроса
             if (!$result) {
-                die('Ошибка выполнения запроса: ' . mysqli_error($conn));
+                die('Ошибка выполнения запроса: ' . mysqli_error($mysqli));
             }
         
             if (mysqli_num_rows($result) > 0) {
@@ -246,9 +245,9 @@ include_once __DIR__ . '/pages/db/funcs.php';
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="pages/js/cart.js"></script>
-    <script src="pages/js/main.js"></script>
-    <script src="pages/js/modal.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
 </body>
 </html>

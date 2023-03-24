@@ -1,6 +1,6 @@
 <?php
-include_once __DIR__ . '/pages/db/db.php';
-include_once __DIR__ . '/pages/db/funcs.php';
+include_once 'db/db.php';
+include_once 'db/funcs.php';
 ?>
 
 <!-- Вывод результатов поиска -->
@@ -156,7 +156,7 @@ include_once __DIR__ . '/pages/db/funcs.php';
                 <div class="category__filter">
                 <?php
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($db, $sql);
+                    $result = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -177,9 +177,9 @@ $category_id = isset($_GET['category']) ? (int)$_GET['category'] : 0;
 
 // Получаем список товаров из базы данных с учетом фильтра по категории
 if ($category_id > 0) {
-    $products = get_products_by_category($db, $category_id);
+    $products = get_products_by_category($mysqli, $category_id);
 } else {
-    $products = get_all_products($db);
+    $products = get_all_products($mysqli);
 }
 
 // Отображаем список товаров
@@ -210,18 +210,18 @@ foreach ($products as $product) {
 }
 
 // Функция получения списка товаров по категории
-function get_products_by_category($db, $category_id) {
+function get_products_by_category($mysqli, $category_id) {
     $category_id = intval($category_id);
     $sql = "SELECT * FROM products WHERE category_id = $category_id";
-    $result = mysqli_query($db, $sql);
+    $result = mysqli_query($mysqli, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
 }
 
 // Функция получения всех товаров
-function get_all_products($db) {
+function get_all_products($mysqli) {
     $sql = "SELECT * FROM products";
-    $result = mysqli_query($db, $sql);
+    $result = mysqli_query($mysqli, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
 }
@@ -252,9 +252,9 @@ function get_all_products($db) {
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="pages/js/cart.js"></script>
-    <script src="pages/js/main.js"></script>
-    <script src="pages/js/modal.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
 
 </body>
 </html>

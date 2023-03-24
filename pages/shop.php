@@ -1,13 +1,13 @@
 <?php
 error_reporting(-1);
 session_start();
-include_once __DIR__ . '/db/db.php'; 
-include_once __DIR__ . '/db/funcs.php';
+include_once __DIR__ . '../db/db.php'; 
+include_once __DIR__ . '../db/funcs.php';
 $products = get_products();
 if (isset($_GET['query'])) {
     // Поиск товаров по запросу
     $query = $_GET['query'];
-    $stmt = $db->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
     $stmt->execute(["%$query%", "%$query%", "%$query%"]);
     $results = $stmt->fetchAll();
   } else {
@@ -168,7 +168,7 @@ if (isset($_GET['query'])) {
                 <div class="category__filter">
                 <?php
                     $sql = "SELECT * FROM categories";
-                    $result = mysqli_query($db, $sql);
+                    $result = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_assoc($result)) {
                         echo '<div class="category">';
                         echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
@@ -237,9 +237,9 @@ if (isset($_GET['query'])) {
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/modal.js"></script>
 
 </body>
 </html>

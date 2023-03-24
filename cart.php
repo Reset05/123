@@ -2,8 +2,8 @@
 
 error_reporting(-1);
 session_start();
-require_once __DIR__ . '/pages/db/db.php';
-require_once __DIR__ . '/pages/db/funcs.php';
+require_once 'db/db.php';
+require_once 'db/funcs.php';
 
 
 if (isset($_GET['cart'])) {

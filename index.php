@@ -1,8 +1,8 @@
 <?php
 error_reporting(-1);
 session_start();
-require_once __DIR__ . '/pages/db/db.php';
-require_once __DIR__ . '/pages/db/funcs.php';
+require_once 'db/db.php';
+require_once 'db/funcs.php';
 
 $products = get_products();
 ?>
@@ -318,10 +318,10 @@ $products = get_products();
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="pages/js/cart.js"></script>
-    <script src="pages/js/main.js"></script>
-    <script src="pages/js/modal.js"></script>
-    <script src="pages/js/valuesCheck.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/valuesCheck.js"></script>
 
 </body>
 </html>

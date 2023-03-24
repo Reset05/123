@@ -5,17 +5,20 @@ const btnSubmitReg = document.querySelector('#btn-submit-reg')
 inpEmailReg.addEventListener('change',()=>{
     let symbolCheck = false
     inputValue = inpEmailReg.value
-    for(let i = 0;i < inputValue.length; i++){
-        if(inputValue[i] == '@'){
-            symbolCheck = true
+        if(inputValue != 0)
+        for(let i = 0;i < inputValue.length; i++){
+            if(inputValue[i] == '@'){
+                symbolCheck = true
+            }
         }
-    }
-    if(symbolCheck == false){
-        btnSubmitReg.setAttribute('disabled','disables')
-        errorMsg.classList.remove('none')
-    }
-    else{
-        btnSubmitReg.removeAttribute('disabled')
-        errorMsg.classList.add('none')
-    }
+        if(symbolCheck == false){
+            btnSubmitReg.setAttribute('disabled','disables')
+            btnSubmitReg.classList.add('btn-disabled')
+            errorMsg.classList.remove('none')
+        }
+        else{
+            btnSubmitReg.removeAttribute('disabled')
+            btnSubmitReg.classList.remove('btn-disabled')
+            errorMsg.classList.add('none')
+        }
 })

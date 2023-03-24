@@ -894,6 +894,11 @@
     margin-bottom: 0;
 }
 
+.btn-disabled{
+    background: #08080830;
+    border: unset;
+}
+
 /* Media */
 
 @media (max-width: 1280px){

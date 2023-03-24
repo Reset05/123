@@ -77,7 +77,7 @@ $products = get_products();
                         <input class="inp__form" required type="text" name="pass" id="inp-reg-email">
                         <p class="text__form">Почта</p>
                     </div>
-                    <div class="block__error">
+                    <div class="block__error none" >
                         <p>Некорректный Email</p>
                     </div>
 
@@ -321,6 +321,7 @@ $products = get_products();
     <script src="pages/js/cart.js"></script>
     <script src="pages/js/main.js"></script>
     <script src="pages/js/modal.js"></script>
+    <script src="pages/js/valuesCheck.js"></script>
 
 </body>
 </html>

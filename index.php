@@ -74,14 +74,14 @@ $products = get_products();
                     </div>
 
                     <div class="block__form">
-                        <input class="inp__form" required type="text" name="pass" id="">
+                        <input class="inp__form" required type="text" name="pass" id="inp-reg-email">
                         <p class="text__form">Почта</p>
                     </div>
                     <div class="block__error">
                         <p>Некорректный Email</p>
                     </div>
 
-                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                    <p class="p__submit"><input id="btn-submit-reg" class="inp__submit" type="submit" value="Войти"></p>
                 </form>
 
                 <p class="text__signup">Если у вас есть аккаунат, можете <a class="link__login" id="btn-log">войти в него.</a></p>

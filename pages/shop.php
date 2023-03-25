@@ -116,10 +116,10 @@ if (isset($_GET['query'])) {
                     <a href="/index.php"><h2 class="logo__text">TechnoShop</h2></a>
                 </div>
                 <div class="category__menu">
-                    <a class="link__menu" href="">Главная</a>
-                    <a class="link__menu" href="">Контакты</a>
-                    <a class="link__menu light" href="">Магазин</a>
-                    <a class="link__menu" href="">Новости</a>
+                    <a class="link__menu" href="/index.php">Главная</a>
+                    <a class="link__menu" href="/index.php#footer__contact">Контакты</a>
+                    <a class="link__menu light" href="shop.php">Магазин</a>
+                    <a class="link__menu" href="/index.php#news">Новости</a>
                 </div>
             </div>
 

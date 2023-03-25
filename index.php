@@ -115,9 +115,9 @@ $products = get_products();
                 </div>
                 <div class="category__menu">
                     <a class="link__menu light" href="">Главная</a>
-                    <a class="link__menu" href="">Контакты</a>
+                    <a class="link__menu" href="#footer__contact">Контакты</a>
                     <a class="link__menu" href="pages/shop.php">Магазин</a>
-                    <a class="link__menu" href="">Новости</a>
+                    <a class="link__menu" href="#news">Новости</a>
                 </div>
             </div>
 
@@ -229,7 +229,7 @@ if (isset($_SESSION['login'])) {
     </section>
 
     <!-- Секция с последними новостями магазина -->
-    <section class="news">
+    <section id="news" class="news">
 
         <div class="container container__news">
 
@@ -266,7 +266,7 @@ foreach ($news as $item) {
 <footer>
     
     <!-- Контакты -->
-    <div class="container container__contact">
+    <div id="footer__contact" class="container container__contact">
         <div class="logo">
             <a href="index.html"><h2 class="logo__text">TechnoShop</h2></a>
         </div>

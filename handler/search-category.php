@@ -135,7 +135,7 @@ include_once '../core/funcs.php';
            <?php
 if (isset($_SESSION['login'])) {
     $login = $_SESSION['login'];
-    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
+    echo '<a class="link__login link__logacc" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
     echo '<form class="logout none" method="post" action="../core/logout.php"><button type="submit" name="logout">Выход</button></form>';
   } else {
     echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';

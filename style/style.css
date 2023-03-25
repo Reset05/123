@@ -141,6 +141,26 @@
     font-size: 21px;
 }
 
+.login__cart{
+    display: flex;
+    position: relative;
+}
+
+.logout{
+    position: absolute;
+    top: 25px;
+    background: #fff;
+    padding: 5px;
+    width: 65px;
+    text-align: center;
+}
+
+.logout button{
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 /* Banner */
 
 .container__banner{
@@ -791,7 +811,9 @@
 }
 
 .desc{
+    width: 800px;
     margin-top: 100px;
+    line-height: 1em;
 }
 
 .price__product{
@@ -898,6 +920,55 @@
 .btn-disabled{
     background: #08080830;
     border: unset;
+}
+
+/* Review */
+
+.add__review{
+    padding: 100px;
+    border: 1px solid var(--light-grey);
+    border-radius: 15px;
+}
+
+.add__review form{
+    margin-bottom: 50px;
+}
+
+.inp__submit__review{
+    width: 20%;
+}
+
+.name__review{
+    width: 20%;
+    height: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--light-grey);
+}
+
+.text__review{
+    width: 30%;
+    height: 75px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--light-grey);
+}
+
+.review h3{
+    margin-bottom: 25px;
+}
+
+.review{
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--grey-color);
+}
+
+.review h3 i{
+    margin-right: 10px;
+}
+
+.review p{
+    margin-bottom: 20px;
 }
 
 /* Media */

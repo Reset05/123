@@ -29,7 +29,7 @@ include_once '../core/funcs.php';
                 <div class="exit">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <form action="" method="post">
+                <form action="../core/signin.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -58,7 +58,7 @@ include_once '../core/funcs.php';
                 <div class="exit__reg">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <form action="" method="post">
+                <form action="../core/signup.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -132,7 +132,15 @@ include_once '../core/funcs.php';
            </div>
 
            <div class="login__cart">
-                <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">Вход / Регистрация</span></a>
+           <?php
+if (isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
+    echo '<form method="post" action="../core/logout.php"><button type="submit" name="logout">Выход</button></form>';
+  } else {
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
+  }
+  ?>
                 <span> |  </span>
                 <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>

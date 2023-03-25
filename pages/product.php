@@ -4,6 +4,11 @@ session_start();
 include_once '../core/db.php'; 
 include_once '../core/funcs.php';
 $products = get_products();
+
+$id = $_GET['id'];
+$stmt = $pdo->prepare("SELECT * FROM reviews WHERE product_id = ?");
+$stmt->execute([$id]);
+$reviews = $stmt->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +36,7 @@ $products = get_products();
                 <div class="exit">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <form action="" method="post">
+                <form action="../core/signin.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -60,7 +65,7 @@ $products = get_products();
                 <div class="exit__reg">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <form action="" method="post">
+                <form action="../core/signup.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -134,7 +139,15 @@ $products = get_products();
            </div>
 
            <div class="login__cart">
-                <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">Вход / Регистрация</span></a>
+           <?php
+if (isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
+    echo '<form method="post" action="../core/logout.php"><button type="submit" name="logout">Выход</button></form>';
+  } else {
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
+  }
+  ?>
                 <span> |  </span>
                 <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>
@@ -193,7 +206,7 @@ $products = get_products();
             <span> | </span>
             <a href="">Отзывы</a>
         </div>
-        <div class="describe">
+        <div class="describe none">
             <div class="type__desc">
                 <h3>Бренд</h3>
                 <p><?= $product['brand'] ?></p>
@@ -214,6 +227,26 @@ $products = get_products();
                 <h3>Гарантия</h3>
                 <p><?= $product['garant'] ?></p>
             </div>
+        </div>
+        <div class="add__review">
+            <form action="../core/add-review.php" method="POST">
+                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                <input type="text" class="name__review" name="name" placeholder="Ваше имя"><br>
+                <textarea class="text__review" name="text" placeholder="Ваш отзыв"></textarea><br>
+                <button class="inp__submit inp__submit__review" type="submit">Добавить отзыв</button>
+            </form>
+            <?php
+            $sql = "SELECT * FROM reviews WHERE product_id = ".$product['id'];
+            $result = mysqli_query($mysqli, $sql);
+
+            // вывод отзывов
+            while($row = mysqli_fetch_assoc($result)) {
+                echo "<div class='review'>";
+                echo "<h3><i class='fa-solid fa-user'></i>".$row['name']."</h3>";
+                echo "<p>".$row['text']."</p>";
+                echo "</div>";
+            }
+            ?>
         </div>
     </div>
 </section>

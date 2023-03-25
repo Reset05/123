@@ -2,8 +2,8 @@
 
 error_reporting(-1);
 session_start();
-require_once '../core/db.php';
-require_once '../core/funcs.php';
+require_once 'db.php';
+require_once 'funcs.php';
 
 
 if (isset($_GET['cart'])) {

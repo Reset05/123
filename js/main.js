@@ -10,7 +10,7 @@ $(function() {
         let id = $(this).data('id');
 
         $.ajax({
-            url: 'cart.php',
+            url: 'core/cart.php',
             type: 'GET',
             data: {cart: 'add', id: id},
             dataType: 'json',
@@ -31,7 +31,7 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'cart.php',
+            url: 'core/cart.php',
             type: 'GET',
             data: {cart: 'show'},
             success: function (res) {

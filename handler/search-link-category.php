@@ -145,12 +145,9 @@ include_once '../core/funcs.php';
         <div class="container container__shop">
         <div class="filter">
                 <h3>Поиск</h3>
-                <form action="../handler/search-category.php" method="GET">
+                <form action="search-category.php" method="GET">
                 <div class="search">
-                <form method="GET" action="../handler/search.php">
-                        <input class="inp__search__filter" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
-                    </form>
                 </div>
                 <h3>Категории</h3>
                 <div class="category__filter">

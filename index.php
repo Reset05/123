@@ -157,11 +157,11 @@ $products = get_products();
         <div class="container container__banner">
 
             <div class="block__category">
-                <a href="handper/search-link-category.php?category=2" name="category[]"><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="handper/search-link-category.php?category=1" name="category[]"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="handper/search-link-category.php?category=3" name="category[]"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="handper/search-link-category.php?category=4" name="category[]"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="handper/search-link-category.php?category=5" name="category[]"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=2" name="category[]"><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=1" name="category[]"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=3" name="category[]"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=4" name="category[]"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=5" name="category[]"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
             </div>
 
             <div class="block__banner">

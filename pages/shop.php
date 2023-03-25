@@ -1,8 +1,8 @@
 <?php
 error_reporting(-1);
 session_start();
-include_once __DIR__ . '../core/db.php'; 
-include_once __DIR__ . '../core/funcs.php';
+include_once  '../core/db.php'; 
+include_once   '../core/funcs.php';
 $products = get_products();
 if (isset($_GET['query'])) {
     // Поиск товаров по запросу

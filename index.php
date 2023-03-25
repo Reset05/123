@@ -237,65 +237,23 @@ if (isset($_SESSION['login'])) {
 
             <div class="block__news">
 
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
+               <?php
+$stmt = $pdo->query("SELECT * FROM news ORDER BY created_at DESC LIMIT 7");
+$news = $stmt->fetchAll();
+foreach ($news as $item) {
+    echo '<div class="card__news">';
+    echo '<div class="img__news">';
+    echo '<img src="' . $item['image'] . '" alt="">';
+    echo '</div>';
+    echo '<div class="block__data">';
+    echo '<a href="pages/news.php?id=' . $item['id'] . '">' . $item['created_at'] . '</a>';
+    echo '</div>';
+    echo '<div class="desc__news">';
+    echo '<p>' . $item['description'] . '</p>';
+    echo '</div>';
+    echo '</div>';
+}
+               ?>
 
             </div>
 

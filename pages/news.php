@@ -147,18 +147,27 @@ $products = get_products();
 
     <section>
         <div class="container container__item__news">
-
-            <div class="image__news">
-                <img src="" alt="">
-            </div>
-            <div class="describe__news">
-                <div class="title__news">
-                    <h2>Title</h2>
-                </div>
-                <div class="describe__news">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium, soluta praesentium blanditiis necessitatibus accusamus quis, earum optio quae tempora, culpa inventore fugit asperiores qui unde sapiente ipsum doloremque doloribus! Nemo?</p>
-                </div>
-            </div>
+        <?php
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $pdo->prepare("SELECT * FROM news WHERE id = ?");
+    $stmt->execute([$id]);
+    $news = $stmt->fetch();
+    ?>
+    <div class="image__news">
+        <img src="<?= $news['image'] ?>" alt="">
+    </div>
+    <div class="describe__news">
+        <div class="title__news">
+            <h2><?= $news['title'] ?></h2>
+        </div>
+        <div class="describe__news">
+            <p><?= $news['descript'] ?></p>
+        </div>
+    </div>
+    <?php
+}
+?>
         </div>
 
     </section>

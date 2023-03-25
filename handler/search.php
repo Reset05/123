@@ -1,6 +1,6 @@
 <?php
-include_once 'db/db.php';
-include_once 'db/funcs.php';
+include_once '../core/db.php';
+include_once '../core/funcs.php';
 ?>
 
 <!-- Вывод результатов поиска -->
@@ -125,7 +125,7 @@ include_once 'db/funcs.php';
             </div>
 
            <div class="form">
-           <form method="GET" action="search.php">
+           <form method="GET" action="../handler/search.php">
                     <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -145,9 +145,9 @@ include_once 'db/funcs.php';
         <div class="container container__shop">
         <div class="filter">
                 <h3>Поиск</h3>
-                <form action="search-category.php" method="GET">
+                <form action="../handler/search-category.php" method="GET">
                 <div class="search">
-                    <form method="GET" action="search.php">
+                    <form method="GET" action="../handler/search.php">
                         <input class="inp__search__filter" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
                     </form>
@@ -234,9 +234,9 @@ if (isset($_GET['query'])) {
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/modal.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/modal.js"></script>
 
 </body>
 </html>

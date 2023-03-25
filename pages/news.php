@@ -1,8 +1,8 @@
 <?php
 error_reporting(-1);
 session_start();
-include_once '../db/db.php'; 
-include_once '../db/funcs.php';
+include_once '../core/db.php'; 
+include_once '../core/funcs.php';
 $products = get_products();
 ?>
 
@@ -127,7 +127,7 @@ $products = get_products();
             </div>
 
            <div class="form">
-           <form method="GET" action="search.php">
+           <form method="GET" action="../handler/search.php">
                         <input class="inp__search" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit" type="submit">Поиск товара</button>
                     </form>

@@ -1,8 +1,8 @@
 <?php
 error_reporting(-1);
 session_start();
-require_once 'db/db.php';
-require_once 'db/funcs.php';
+require_once 'core/db.php';
+require_once 'core/funcs.php';
 
 $products = get_products();
 ?>
@@ -134,7 +134,7 @@ $products = get_products();
             </div>
 
            <div class="form">
-           <form method="GET" action="search.php">
+           <form method="GET" action="handler/search.php">
                     <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -157,11 +157,11 @@ $products = get_products();
         <div class="container container__banner">
 
             <div class="block__category">
-                <a href="search-link-category.php?category=2" name="category[]"><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="search-link-category.php?category=1" name="category[]"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="search-link-category.php?category=3" name="category[]"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="search-link-category.php?category=4" name="category[]"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href="search-link-category.php?category=5" name="category[]"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handper/search-link-category.php?category=2" name="category[]"><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handper/search-link-category.php?category=1" name="category[]"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handper/search-link-category.php?category=3" name="category[]"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handper/search-link-category.php?category=4" name="category[]"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handper/search-link-category.php?category=5" name="category[]"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
             </div>
 
             <div class="block__banner">

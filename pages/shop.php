@@ -1,8 +1,8 @@
 <?php
 error_reporting(-1);
 session_start();
-include_once __DIR__ . '../db/db.php'; 
-include_once __DIR__ . '../db/funcs.php';
+include_once __DIR__ . '../core/db.php'; 
+include_once __DIR__ . '../core/funcs.php';
 $products = get_products();
 if (isset($_GET['query'])) {
     // Поиск товаров по запросу
@@ -24,8 +24,8 @@ if (isset($_GET['query'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="stylesheet" href="/style/reset.css">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/reset.css">
     <title>TechnoShop</title>
 </head>
 <body>
@@ -136,7 +136,7 @@ if (isset($_GET['query'])) {
             </div>
 
            <div class="form">
-           <form method="GET" action="../search.php">
+           <form method="GET" action="../handler/search.php">
                     <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
@@ -157,9 +157,9 @@ if (isset($_GET['query'])) {
             <div class="filter">
                 <h3>Поиск</h3>
                 <div class="search">
-                <form action="../search-category.php">
+                <form action="../handler/search-category.php">
                 <div class="search">
-                <form method="GET" action="../search.php">
+                <form method="GET" action="../handler/search.php">
                         <input class="inp__search__filter" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
                     </form>

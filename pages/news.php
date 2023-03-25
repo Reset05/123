@@ -110,7 +110,7 @@ $products = get_products();
                     <a class="link__menu" href="">Главная</a>
                     <a class="link__menu" href="">Контакты</a>
                     <a class="link__menu" href="">Магазин</a>
-                    <a class="link__menu" href="">Новости</a>
+                    <a class="link__menu light" href="">Новости</a>
                 </div>
             </div>
 

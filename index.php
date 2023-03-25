@@ -114,7 +114,7 @@ $products = get_products();
                     <a href="index.php"><h2 class="logo__text">TechnoShop</h2></a>
                 </div>
                 <div class="category__menu">
-                    <a class="link__menu" href="">Главная</a>
+                    <a class="link__menu light" href="">Главная</a>
                     <a class="link__menu" href="">Контакты</a>
                     <a class="link__menu" href="pages/shop.php">Магазин</a>
                     <a class="link__menu" href="">Новости</a>
@@ -238,7 +238,7 @@ if (isset($_SESSION['login'])) {
             <div class="block__news">
 
                <?php
-$stmt = $pdo->query("SELECT * FROM news ORDER BY created_at DESC LIMIT 7");
+$stmt = $pdo->query("SELECT * FROM news ORDER BY created_at DESC LIMIT 5");
 $news = $stmt->fetchAll();
 foreach ($news as $item) {
     echo '<div class="card__news">';

@@ -118,7 +118,7 @@ if (isset($_GET['query'])) {
                 <div class="category__menu">
                     <a class="link__menu" href="">Главная</a>
                     <a class="link__menu" href="">Контакты</a>
-                    <a class="link__menu" href="">Магазин</a>
+                    <a class="link__menu light" href="">Магазин</a>
                     <a class="link__menu" href="">Новости</a>
                 </div>
             </div>

@@ -142,14 +142,14 @@ $products = get_products();
 
            <div class="login__cart">
            <?php
-
 if (isset($_SESSION['login'])) {
-  $login = $_SESSION['login'];
-  echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" >' . $login . '</span></a>';
-} else {
-  echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
-}
-?>
+    $login = $_SESSION['login'];
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
+    echo '<form method="post" action="core/logout.php"><button type="submit" name="logout">Выход</button></form>';
+  } else {
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
+  }
+  ?>
                 <span> |  </span>
                 <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>

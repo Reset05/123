@@ -143,7 +143,7 @@ $reviews = $stmt->fetchAll();
 if (isset($_SESSION['login'])) {
     $login = $_SESSION['login'];
     echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
-    echo '<form method="post" action="../core/logout.php"><button type="submit" name="logout">Выход</button></form>';
+    echo '<form class="logout none" method="post" action="../core/logout.php"><button type="submit" name="logout">Выход</button></form>';
   } else {
     echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
   }

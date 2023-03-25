@@ -320,8 +320,9 @@
     font-weight: 900;
 }
 
-.block__title h3{
+.block__title a{
     font-size: 18px;
+    color: black;
     font-weight: 900;
 }
 

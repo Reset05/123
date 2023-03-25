@@ -202,7 +202,7 @@ if (isset($_SESSION['login'])) {
                             <img class="img__card" src="img/<?= $product['img'] ?>" alt="">
                         </div>
                         <div class="block__title">
-                            <h3><?= $product['title'] ?></h3>
+                        <a href="pages/product.php?id=<?= $product['id'] ?>"><?= $product['title'] ?></a>
                         </div>
                         <div class="block__desc">
                             <p><?= $product['content'] ?></p>

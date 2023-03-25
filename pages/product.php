@@ -144,73 +144,79 @@ $products = get_products();
 
 
 <main>
-    <section>
-        <div class="container container__product">
+<section>
+    <div class="container container__product">
+        <?php 
+        $id = $_GET['id'];
+        $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
+        $stmt->execute([$id]);
+        $product = $stmt->fetch();
+        ?>
 
-            <!-- Фото с товаром -->
-            <div class="photo__product">
-                <div class="oversize__photo">
-                    <img src="" alt="">
-                </div>
-                <div class="minisize__photo">
-                    <div class="img"></div>
-                    <div class="img"></div>
-                    <div class="img"></div>
-                </div>
+        <!-- Фото с товаром -->
+        <div class="photo__product">
+            <div class="oversize__photo">
+                <img src="img/<?= $product['img'] ?>" alt="">
             </div>
-
-            <div class="desc__product">
-                <div class="title__product">
-                    <h2>Title</h2>
-                </div>
-                <div class="score__product">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <div class="desc">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto facilis nostrum fugit suscipit culpa porro perferendis laborum rem odit voluptatibus tempore blanditiis quaerat in est, voluptates expedita dicta aut repellat.</p>
-                </div>
-                <div class="block__buy">
-                    <div class="price__product">
-                        <p>$300</p>
-                    </div>
-                    <button class="btn__buy__product">Купить</button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section>
-        <div class="container container__characteristic">
-            <div class="header">
-                <a href="">Характеристики</a>
-                <span> | </span>
-                <a href="">Отзывы</a>
-            </div>
-            <div class="describe">
-                <div class="type__desc">
-                    <h3>Бренд</h3>
-                    <p>Название бренда</p>
-                </div>
-                <div class="type__desc">
-                    <h3>Тип</h3>
-                    <p>Название типа</p>
-                </div>
-                <div class="type__desc">
-                    <h3>Модель</h3>
-                    <p>Название модели</p>
-                </div>
-                <div class="type__desc">
-                    <h3>Цвет</h3>
-                    <p>Название цвета</p>
-                </div>
-                <div class="type__desc">
-                    <h3>Гарантия</h3>
-                    <p>Срок гарантии</p>
-                </div>
+            <div class="minisize__photo">
+                <div class="img"></div>
+                <div class="img"></div>
+                <div class="img"></div>
             </div>
         </div>
-    </section>
+
+        <div class="desc__product">
+            <div class="title__product">
+                <h2><?= $product['title'] ?></h2>
+            </div>
+            <div class="score__product">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <div class="desc">
+                <p><?= $product['descript'] ?></p>
+            </div>
+            <div class="block__buy">
+                <div class="price__product">
+                    <p>$<?= $product['price'] ?></p>
+                </div>
+                <button class="btn__buy__product">Купить</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <div class="container container__characteristic">
+        <div class="header">
+            <a href="">Характеристики</a>
+            <span> | </span>
+            <a href="">Отзывы</a>
+        </div>
+        <div class="describe">
+            <div class="type__desc">
+                <h3>Бренд</h3>
+                <p><?= $product['brand'] ?></p>
+            </div>
+            <div class="type__desc">
+                <h3>Тип</h3>
+                <p><?= $product['type'] ?></p>
+            </div>
+            <div class="type__desc">
+                <h3>Модель</h3>
+                <p><?= $product['model'] ?></p>
+            </div>
+            <div class="type__desc">
+                <h3>Цвет</h3>
+                <p><?= $product['color'] ?></p>
+            </div>
+            <div class="type__desc">
+                <h3>Гарантия</h3>
+                <p><?= $product['garant'] ?></p>
+            </div>
+        </div>
+    </div>
+</section>
 
 </main>
 

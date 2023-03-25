@@ -129,7 +129,7 @@ $products = get_products();
            <div class="form">
            <form method="GET" action="../handler/search.php">
                         <input class="inp__search" type="text" name="filter" id="" placeholder="Введите здесь">
-                        <button class="btn__submit" type="submit">Поиск товара</button>
+                        <button class="btn__submit" type="submit">Поиск</button>
                     </form>
            </div>
 

@@ -850,10 +850,6 @@ body{
     transition: 0.3s;
 }
 
-.header a:first-child{
-    color: #fff;
-}
-
 .header a:hover{
     color: #fff;
 }

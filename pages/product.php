@@ -134,7 +134,7 @@ $reviews = $stmt->fetchAll();
            <div class="form">
            <form method="GET" action="../handler/search.php">
                         <input class="inp__search" type="text" name="filter" id="" placeholder="Введите здесь">
-                        <button class="btn__submit" type="submit">Поиск товара</button>
+                        <button class="btn__submit" type="submit">Поиск</button>
                     </form>
            </div>
 
@@ -202,11 +202,11 @@ if (isset($_SESSION['login'])) {
 <section>
     <div class="container container__characteristic">
         <div class="header">
-            <a href="">Характеристики</a>
+            <a class="link__char light" href="">Характеристики</a>
             <span> | </span>
-            <a href="">Отзывы</a>
+            <a class="link__review" href="">Отзывы</a>
         </div>
-        <div class="describe none">
+        <div class="describe">
             <div class="type__desc">
                 <h3>Бренд</h3>
                 <p><?= $product['brand'] ?></p>
@@ -228,7 +228,7 @@ if (isset($_SESSION['login'])) {
                 <p><?= $product['garant'] ?></p>
             </div>
         </div>
-        <div class="add__review">
+        <div class="add__review none">
             <form action="../core/add-review.php" method="POST">
                 <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                 <input type="text" class="name__review" name="name" placeholder="Ваше имя"><br>
@@ -275,6 +275,7 @@ if (isset($_SESSION['login'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/cart.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/product.js"></script>
     <script src="../js/modal.js"></script>
 
 </body>

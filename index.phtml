@@ -1,8 +1,9 @@
 <?php
 error_reporting(-1);
 session_start();
-require_once __DIR__ . '/db/db.php';
-require_once __DIR__ . '/db/funcs.php';
+require_once 'core/db.php';
+require_once 'core/funcs.php';
+
 $products = get_products();
 ?>
 
@@ -15,7 +16,6 @@ $products = get_products();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/reset.css">
     <title>TechnoShop</title>
@@ -32,7 +32,7 @@ $products = get_products();
                     <div class="exit">
                         <i class="fa-solid fa-xmark btn-exit"></i>
                     </div>
-                    <form action="" method="post">
+                    <form action="core/signin.php" method="post">
                         <div class="block__form">
                             <input class="inp__form" required type="text" name="login" id="">
                             <p class="text__form">Логин</p>
@@ -62,7 +62,7 @@ $products = get_products();
                 <div class="exit__reg">
                     <i class="fa-solid fa-xmark btn-exit"></i>
                 </div>
-                <form action="" method="post">
+                <form action="core/signup.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -74,11 +74,14 @@ $products = get_products();
                     </div>
 
                     <div class="block__form">
-                        <input class="inp__form" required type="text" name="pass" id="">
+                        <input class="inp__form" required type="text" name="email" id="inp-reg-email">
                         <p class="text__form">Почта</p>
                     </div>
+                    <div class="block__error none" >
+                        <p>Некорректный Email</p>
+                    </div>
 
-                    <p class="p__submit"><input class="inp__submit" type="submit" value="Войти"></p>
+                    <p class="p__submit"><input id="btn-submit-reg" class="inp__submit" type="submit" value="Войти"></p>
                 </form>
 
                 <p class="text__signup">Если у вас есть аккаунат, можете <a class="link__login" id="btn-log">войти в него.</a></p>
@@ -87,14 +90,18 @@ $products = get_products();
     </section>
 
 <!-- Корзина -->
-<div class="cart-modal" id="cart-modal">
-<div class="modal-cart-content">
+<section class="carts none cart-modal" id="cart-modal">
+<div class="container container__cart">
+            <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
+            <h3 class="title__cart">Корзина</h3>
+            <div class="container-cartitem">
+                <div class="modal-cart-content">
 
+                </div>
 </div>
 </div>
-
-<?php debug($_SESSION); // session_destroy(); ?>
-
+</div>
+</section>
 
     <!-- Меню -->
 
@@ -104,13 +111,13 @@ $products = get_products();
 
             <div class="logo__category">
                 <div class="logo">
-                    <a href="index.html"><h2 class="logo__text">TechnoShop</h2></a>
+                    <a href="index.php"><h2 class="logo__text">TechnoShop</h2></a>
                 </div>
                 <div class="category__menu">
-                    <a class="link__menu" href="">Главная</a>
-                    <a class="link__menu" href="">Контакты</a>
-                    <a class="link__menu" href="">Магазин</a>
-                    <a class="link__menu" href="">Новости</a>
+                    <a class="link__menu light" href="">Главная</a>
+                    <a class="link__menu" href="#footer__contact">Контакты</a>
+                    <a class="link__menu" href="pages/shop.php">Магазин</a>
+                    <a class="link__menu" href="#news">Новости</a>
                 </div>
             </div>
 
@@ -123,18 +130,26 @@ $products = get_products();
         <div class="container container__search">
 
             <div class="shop__category">
-                <a class="link__sc" href=""><i class="fa-solid fa-bars-staggered"></i>Категории Магазина</a>
+                <a class="link__sc" href="pages/shop.php"><i class="fa-solid fa-bars-staggered"></i>Категории Магазина</a>
             </div>
 
            <div class="form">
-                <form action="">
-                    <input class="inp__search" type="text" name="" id="" placeholder="Введите здесь">
+           <form method="GET" action="handler/search.php">
+                    <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
            </div>
 
            <div class="login__cart">
-                <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>
+           <?php
+if (isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+    echo '<a class="link__login link__logacc" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
+    echo '<form class="logout none" method="post" action="core/logout.php"><button type="submit" name="logout">Выход</button></form>';
+  } else {
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
+  }
+  ?>
                 <span> |  </span>
                 <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>
@@ -150,11 +165,11 @@ $products = get_products();
         <div class="container container__banner">
 
             <div class="block__category">
-                <a href=""><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href=""><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href=""><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href=""><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
-                <a href=""><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=2" name="category[]"><i class="fa-solid fa-computer"></i> Компьютеры и ноутбуки <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=1" name="category[]"><i class="fa-solid fa-mobile"></i> Смартфоны и фототехника <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=3" name="category[]"><i class="fa-solid fa-microchip"></i> Комплектующие для ПК <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=4" name="category[]"><i class="fa-solid fa-tv"></i> ТВ <span><i class="fa-solid fa-angle-right"></i></span></a>
+                <a href="handler/search-link-category.php?category=5" name="category[]"><i class="fa-solid fa-gamepad"></i></i> Консоли <span><i class="fa-solid fa-angle-right"></i></span></a>
             </div>
 
             <div class="block__banner">
@@ -184,10 +199,10 @@ $products = get_products();
                                 <p>SALE</p>
                             </div>
                             <?php endif; ?>
-                            <img src="img/<?= $product['img'] ?>" alt="">
+                            <img class="img__card" src="img/<?= $product['img'] ?>" alt="">
                         </div>
                         <div class="block__title">
-                            <h3><?= $product['title'] ?></h3>
+                        <a href="pages/product.php?id=<?= $product['id'] ?>"><?= $product['title'] ?></a>
                         </div>
                         <div class="block__desc">
                             <p><?= $product['content'] ?></p>
@@ -202,7 +217,7 @@ $products = get_products();
                                 <?php endif; ?>
                                 <p class="last__price"><?= $product['price'] ?></p>
                             </div>
-                            <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy add-to-cart" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
                 </div>
@@ -214,7 +229,7 @@ $products = get_products();
     </section>
 
     <!-- Секция с последними новостями магазина -->
-    <section class="news">
+    <section id="news" class="news">
 
         <div class="container container__news">
 
@@ -222,77 +237,23 @@ $products = get_products();
 
             <div class="block__news">
 
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
-
-                 <div class="card__news">
-                    <div class="img__news">
-                        <img src="" alt="">
-                    </div>
-                    <div class="block__data">
-                        <h3>01 октября, 2023</h3>
-                    </div>
-                    <div class="desc__news">
-                        <p>description</p>
-                    </div>
-                </div>
+               <?php
+$stmt = $pdo->query("SELECT * FROM news ORDER BY created_at DESC LIMIT 5");
+$news = $stmt->fetchAll();
+foreach ($news as $item) {
+    echo '<div class="card__news">';
+    echo '<div class="img__news">';
+    echo '<img src="' . $item['image'] . '" alt="">';
+    echo '</div>';
+    echo '<div class="block__data">';
+    echo '<a href="pages/news.php?id=' . $item['id'] . '">' . $item['created_at'] . '</a>';
+    echo '</div>';
+    echo '<div class="desc__news">';
+    echo '<p>' . $item['description'] . '</p>';
+    echo '</div>';
+    echo '</div>';
+}
+               ?>
 
             </div>
 
@@ -305,7 +266,7 @@ $products = get_products();
 <footer>
     
     <!-- Контакты -->
-    <div class="container container__contact">
+    <div id="footer__contact" class="container container__contact">
         <div class="logo">
             <a href="index.html"><h2 class="logo__text">TechnoShop</h2></a>
         </div>
@@ -321,10 +282,12 @@ $products = get_products();
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/main.js"></script>
     <script src="js/modal.js"></script>
+    <script src="js/valuesCheck.js"></script>
 
 </body>
 </html>

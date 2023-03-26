@@ -1,3 +1,9 @@
+<?php
+include_once '../core/db.php';
+include_once '../core/funcs.php';
+?>
+
+<!-- Вывод результатов поиска -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -23,7 +29,7 @@
                 <div class="exit">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <form action="" method="post">
+                <form action="../core/signin.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -52,7 +58,7 @@
                 <div class="exit__reg">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <form action="" method="post">
+                <form action="../core/signup.php" method="post">
                     <div class="block__form">
                         <input class="inp__form" required type="text" name="login" id="">
                         <p class="text__form">Логин</p>
@@ -77,33 +83,18 @@
     </section>
 
 <!-- Корзина -->
-    <section class="carts none">
-        <div class="container container__cart">
+<section class="carts none cart-modal" id="cart-modal">
+<div class="container container__cart">
             <div class="exit__cart"><i class="fa-regular fa-circle-xmark"></i></div>
             <h3 class="title__cart">Корзина</h3>
             <div class="container-cartitem">
-                <div data-id="0" class="cartitem">
-                    <div class="logoitem">
-                        <img class="imgitem" src="" alt="">
-                    </div>
-                    <div class="textitem">
-                        <h3>Title</h3>
-                        <div class="counter">
-                            <i data-action="minus" class="minus fa-regular fa-square-minus"></i>
-                            <p data-counter class="count">1</p>
-                            <i data-action="plus" class="plus fa-regular fa-square-plus"></i>
-                        </div>
-                        <p class="price__cart">Price</p>
-                    </div>
+                <div class="modal-cart-content">
+
                 </div>
-            </div>
-            <div class="title__total">Итого:</div>
-    
-            <div class="btn__buy__cart">
-                <button>Купить</button>
-            </div>
-        </div>
-    </section>
+</div>
+</div>
+</div>
+</section>
     
     <section class="menu">
         <!-- Меню с ссылками на разделы сайта -->
@@ -111,13 +102,13 @@
 
             <div class="logo__category">
                 <div class="logo">
-                    <a href="/index.html"><h2 class="logo__text">TechnoShop</h2></a>
+                    <a href="/index.php"><h2 class="logo__text">TechnoShop</h2></a>
                 </div>
                 <div class="category__menu">
-                    <a class="link__menu" href="">Главная</a>
-                    <a class="link__menu" href="">Контакты</a>
-                    <a class="link__menu" href="">Магазин</a>
-                    <a class="link__menu" href="">Новости</a>
+                <a class="link__menu" href="/index.php">Главная</a>
+                    <a class="link__menu" href="/index.php#footer__contact">Контакты</a>
+                    <a class="link__menu light" href="shop.php">Магазин</a>
+                    <a class="link__menu" href="/index.php#news">Новости</a>
                 </div>
             </div>
 
@@ -134,44 +125,98 @@
             </div>
 
            <div class="form">
-                <form action="">
-                    <input class="inp__search" type="text" name="" id="" placeholder="Введите здесь">
+           <form method="GET" action="search.php">
+                    <input class="inp__search" type="text" name="query" id="" placeholder="Введите здесь">
                     <button class="btn__submit" type="submit">Поиск <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
            </div>
 
            <div class="login__cart">
-                <a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text">Вход / Регистрация</span></a>
+           <?php
+if (isset($_SESSION['login'])) {
+    $login = $_SESSION['login'];
+    echo '<a class="link__login link__logacc" href=""><i class="fa-regular fa-user"></i> <span class="login__text">' . $login . '</span></a>';
+    echo '<form class="logout none" method="post" action="../core/logout.php"><button type="submit" name="logout">Выход</button></form>';
+  } else {
+    echo '<a class="link__login" href=""><i class="fa-regular fa-user"></i> <span class="login__text" id="btn-open">Вход / Регистрация</span></a>';
+  }
+  ?>
                 <span> |  </span>
-                <a class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                <a id="get-cart" class="link__cart" href=""><i class="fa-solid fa-cart-shopping"></i></a>
            </div>
 
         </div>
     </section>
 
-
 <main>
-
     <section>
-        <div class="container container__item__news">
+        <div class="container container__shop">
+        <div class="filter">
+                <h3>Поиск</h3>
+                <form action="search-category.php" method="GET">
+                <div class="search">
+                        <button class="inp__submit__filter" type="submit">Поиск товара</button>
+                </div>
+                <h3>Категории</h3>
+                <div class="category__filter">
+                <?php
+                    $sql = "SELECT * FROM categories";
+                    $result = mysqli_query($mysqli, $sql);
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="category">';
+                        echo '<input type="checkbox" name="category[]" value="' . $row['id'] . '"> ';
+                        echo '<label>';
+                        echo $row['title'];
+                        echo '</label>';
+                        echo '</div>';
+                    }
+?>
+                </div>
+                </form>
+            </div>
+            <div class="products">
+                <div class="block__products">
+                    <?php
 
-            <div class="image__news">
-                <img src="" alt="">
-            </div>
-            <div class="describe__news">
-                <div class="title__news">
-                    <h2>Title</h2>
-                </div>
-                <div class="describe__news">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium, soluta praesentium blanditiis necessitatibus accusamus quis, earum optio quae tempora, culpa inventore fugit asperiores qui unde sapiente ipsum doloremque doloribus! Nemo?</p>
-                </div>
-            </div>
+// Получаем результаты поиска
+if (isset($_GET['query'])) {
+    $query = $_GET['query'];
+    $stmt = $pdo->prepare("SELECT * FROM products WHERE title LIKE ? OR content LIKE ? OR price LIKE ?");
+    $stmt->execute(["%$query%", "%$query%", "%$query%"]);
+    $search_results = $stmt->fetchAll();
+} else {
+    $search_results = [];
+}
+
+?>
+<?php foreach($search_results as $product): ?>
+     <div class="card__border card__filter">
+    <div class="card">
+    <div class="img__card">
+    <img class="img__card" src="img/<?= $product['img'] ?>" alt="">
+    </div>
+    <div class="block__title">
+    <h3><?= $product['title'] ?></h3>
+    </div>
+    <div class="block__desc">
+    <p><?= $product['content'] ?></p>
+    </div>
+    <div class="block__score">
+    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+    </div>
+    <div class="block__curr">
+    <div class="block__price">
+    <p class="last__price"><?= $product['price'] ?></p>
+    </div>
+    <a href="?cart=add&id=<?= $product['id'] ?>" class="btn__buy add-to-cart" data-id="<?= $product['id'] ?>"><i class="fa-solid fa-cart-shopping"></i></a>
+    </div>
+    </div>
+    </div>
+<?php endforeach; ?>
+
         </div>
-
     </section>
-
 </main>
-
 
 <footer>
     
@@ -188,10 +233,15 @@
 
 </footer>
 
+
+
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
-
-    <script src="/js/cart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/modal.js"></script>
 
 </body>
 </html>

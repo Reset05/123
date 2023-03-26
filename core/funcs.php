@@ -8,8 +8,9 @@ function debug(array $data): void
 function get_products(): array
 {
     global $pdo;
-    $res = $pdo->query("SELECT * FROM products");
-    return $res->fetchAll();
+    $stmt = $pdo->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 8");
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function get_product(int $id): array

@@ -7,6 +7,11 @@ const modalSignup = document.querySelector('#modal-signup')
 const btnLog = document.querySelector('#btn-log')
 const btnExit = document.querySelectorAll('.btn-exit')
 
+if(typeof document.querySelector('.logout') != undefined){
+    const btnLogout = document.querySelector('.logout')
+    console.log(btnLogout)
+}
+
 function setModalActive(arr){
     arr.forEach(element => {
         element.classList.remove('none')

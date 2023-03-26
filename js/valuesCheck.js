@@ -25,5 +25,6 @@ inpEmailReg.addEventListener('change',()=>{
         else{
             errorMsg.classList.remove('none')
             btnSubmitReg.classList.add('btn-disabled')
+            console.log('1')
         }
 })

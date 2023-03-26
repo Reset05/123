@@ -18,6 +18,11 @@ $products = get_products();
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/reset.css">
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+/>
+
     <title>TechnoShop</title>
 </head>
 <body>
@@ -173,6 +178,17 @@ if (isset($_SESSION['login'])) {
             </div>
 
             <div class="block__banner">
+                <div class="slider">
+                <div class="slider__item">
+                    <img src="img/1.jpg" alt="Slide 1">
+                </div>
+                <div class="slider__item">
+                    <img src="img/1.jpg" alt="Slide 2">
+                </div>
+                <div class="slider__item">
+                    <img src="img/1.jpg" alt="Slide 3">
+                </div>
+</div>
 
             </div>
 
@@ -279,7 +295,32 @@ foreach ($news as $item) {
 </footer>
 
 
+    <script>
+       let sliderItems = document.querySelectorAll('.slider__item');
+let currentSlide = 0;
 
+function showSlide(n) {
+  if (n < 0) {
+    currentSlide = sliderItems.length - 1;
+  } else if (n >= sliderItems.length) {
+    currentSlide = 0;
+  }
+  
+  for (let i = 0; i < sliderItems.length; i++) {
+    sliderItems[i].classList.remove('active');
+  }
+  
+  sliderItems[currentSlide].classList.add('active');
+  
+  currentSlide++;
+  
+  setTimeout(function() {
+    showSlide(currentSlide);
+  }, 5000); // интервал смены слайдов в миллисекундах
+}
+
+showSlide(currentSlide);
+    </script>
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/e841cfff06.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -288,6 +329,7 @@ foreach ($news as $item) {
     <script src="js/main.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/valuesCheck.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 </body>
 </html>

@@ -23,8 +23,8 @@ inpEmailReg.addEventListener('change',()=>{
             }
         }
         else{
-            errorMsg.classList.remove('none')
+            errorMsg.classList.add('none')
             btnSubmitReg.classList.add('btn-disabled')
-            console.log('1')
+            btnSubmitReg.setAttribute('disabled','disables')
         }
 })

@@ -2,7 +2,7 @@
     <?php foreach($_SESSION['cart'] as $id => $item): ?>
                 <div data-id="<?php echo $id ?>" class="cartitem">
                     <div class="logoitem">
-                    <img class="imgitem" src="img/<?php echo $item['img'] ?>" alt="">
+                    <img class="imgitem" src="../img/product/<?php echo $item['img'] ?>" alt="">
                     </div>
                     <div class="textitem">
                     <h3><?php echo $item['title'] ?></h3>

@@ -89,6 +89,7 @@ $reviews = $stmt->fetchAll();
         </div>
     </section>
 
+
 <!-- Корзина -->
 <section class="carts none cart-modal" id="cart-modal">
 <div class="container container__cart">
@@ -192,7 +193,7 @@ if (isset($_SESSION['login'])) {
                 <div class="price__product">
                     <p>₽<?= $product['price'] ?></p>
                 </div>
-                <button class="btn__buy__product">Купить</button>
+                <a href="?cart=add&id=<?= $product['id']?>" class="btn__buy__product add-to-cart" data-id="<?= $product['id']?>"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
 

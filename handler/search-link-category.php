@@ -196,7 +196,7 @@ foreach ($products as $product) {
     echo '<img class="img__card" src="../img/product/' . $product['img'] . '" alt="">';
     echo '</div>';
     echo '<div class="block__title">';
-    echo '<h3>' . $product['title'] . '</h3>';
+    echo '<a href="../pages/product.php?id=' . $product['id'] . '">' . $product['title'] . '</a>';
     echo '</div>';
     echo '<div class="block__desc">';
     echo '<p>' . $product['content'] . '</p>';

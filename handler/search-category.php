@@ -199,7 +199,7 @@ if (isset($_SESSION['login'])) {
                     echo '<img class="img__card" src="../img/product/' . $products['img'] . '" alt="">';
                     echo '</div>';
                     echo '<div class="block__title">';
-                    echo '<h3>' . $products['title'] . '</h3>';
+                    echo '<a href="../pages/product.php?id=' . $product['id'] . '">' . $product['title'] . '</a>';
                     echo '</div>';
                     echo '<div class="block__desc">';
                     echo '<p>' . $products['content'] . '</p>';

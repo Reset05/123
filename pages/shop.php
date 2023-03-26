@@ -162,14 +162,11 @@ if (isset($_SESSION['login'])) {
 <main>
     <section>
         <div class="container container__shop">
-            <div class="filter">
+        <div class="filter">
                 <h3>Поиск</h3>
-                <div class="search">
                 <form action="../handler/search-category.php">
                 <div class="search">
-                <form method="GET" action="../handler/search.php">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
-                    </form>
                 </div>
                 <h3>Категории</h3>
                 <div class="category__filter">
@@ -186,7 +183,6 @@ if (isset($_SESSION['login'])) {
                     }
 ?>
                 </div>
-                </div>
                 </form>
             </div>
             <div class="products">
@@ -197,7 +193,7 @@ if (isset($_SESSION['login'])) {
                 <div class="card__border card__filter">
                     <div class="card">
                         <div class="img__card">
-                            <img class="img__card" src="../img/<?= $product['img'] ?>" alt="">
+                            <img class="img__card" src="../img/product/<?= $product['img'] ?>" alt="">
                         </div>
                         <div class="block__title">
                             <h3><?= $product['title'] ?></h3>

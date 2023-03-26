@@ -163,7 +163,7 @@ if (isset($_GET['id'])) {
     $news = $stmt->fetch();
     ?>
     <div class="image__news">
-        <img src="<?= $news['image'] ?>" alt="">
+        <img class="image__news" src="../img/news/<?= $news['image'] ?>" alt="">
     </div>
     <div class="describe__news">
         <div class="title__news">

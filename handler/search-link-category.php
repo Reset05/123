@@ -193,7 +193,7 @@ foreach ($products as $product) {
     echo '<div class="card__border card__filter">';
     echo '<div class="card">';
     echo '<div class="img__card">';
-    echo '<img class="img__card" src="img/' . $product['img'] . '" alt="">';
+    echo '<img class="img__card" src="../img/product/' . $product['img'] . '" alt="">';
     echo '</div>';
     echo '<div class="block__title">';
     echo '<h3>' . $product['title'] . '</h3>';

@@ -168,7 +168,6 @@ if (isset($_SESSION['login'])) {
                 <form action="../handler/search-category.php">
                 <div class="search">
                 <form method="GET" action="../handler/search.php">
-                        <input class="inp__search__filter" type="text" name="filter" id="" placeholder="Введите здесь">
                         <button class="inp__submit__filter" type="submit">Поиск товара</button>
                     </form>
                 </div>

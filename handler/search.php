@@ -193,7 +193,7 @@ if (isset($_GET['query'])) {
      <div class="card__border card__filter">
     <div class="card">
     <div class="img__card">
-    <img class="img__card" src="img/<?= $product['img'] ?>" alt="">
+    <img class="img__card" src="../img/product/<?= $product['img'] ?>" alt="">
     </div>
     <div class="block__title">
     <h3><?= $product['title'] ?></h3>

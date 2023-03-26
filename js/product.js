@@ -11,7 +11,7 @@ btnReview.addEventListener('click',function(e){
     characteristic.classList.remove('light')
 })
 
-characteristick.addEventListener('click',function(e){
+characteristic.addEventListener('click',function(e){
     e.preventDefault()
     describe.classList.remove('none')
     review.classList.add('none')

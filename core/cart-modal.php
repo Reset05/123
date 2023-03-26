@@ -7,9 +7,7 @@
                     <div class="textitem">
                     <h3><?php echo $item['title'] ?></h3>
                         <div class="counter">
-                            <i data-action="minus" class="minus fa-regular fa-square-minus"></i>
                             <p data-counter class="count"><?php echo $item['qty'] ?></p>
-                            <i data-action="plus" class="plus fa-regular fa-square-plus"></i>
                         </div>
                         <p class="price__cart"><?php echo $item['price'] ?></p>
                     </div>

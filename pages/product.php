@@ -169,13 +169,13 @@ if (isset($_SESSION['login'])) {
         <!-- Фото с товаром -->
         <div class="photo__product">
             <div class="oversize__photo">
-                <img src="img/<?= $product['img'] ?>" alt="">
+                <img class="oversize__photo" src="../img/product/<?= $product['img'] ?>" alt="">
             </div>
-            <div class="minisize__photo">
+            <!-- <div class="minisize__photo">
                 <div class="img"></div>
                 <div class="img"></div>
                 <div class="img"></div>
-            </div>
+            </div> -->
         </div>
 
         <div class="desc__product">
@@ -190,7 +190,7 @@ if (isset($_SESSION['login'])) {
             </div>
             <div class="block__buy">
                 <div class="price__product">
-                    <p>$<?= $product['price'] ?></p>
+                    <p>₽<?= $product['price'] ?></p>
                 </div>
                 <button class="btn__buy__product">Купить</button>
             </div>

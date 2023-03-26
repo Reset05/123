@@ -185,7 +185,7 @@ if (isset($_SESSION['login'])) {
 
       while ($product = mysqli_fetch_assoc($result)) {
         echo '<div class="slider__item">
-                <img src="img/' . $product['img_banner'] . '" alt="Slide">
+                <img src="img/banner/' . $product['img_banner'] . '" alt="Slide">
               </div>';
       }
     ?>
@@ -215,7 +215,7 @@ if (isset($_SESSION['login'])) {
                                 <p>SALE</p>
                             </div>
                             <?php endif; ?>
-                            <img class="img__card" src="img/<?= $product['img'] ?>" alt="">
+                            <img class="img__card" src="img/product/<?= $product['img'] ?>" alt="">
                         </div>
                         <div class="block__title">
                         <a href="pages/product.php?id=<?= $product['id'] ?>"><?= $product['title'] ?></a>
@@ -259,7 +259,7 @@ $news = $stmt->fetchAll();
 foreach ($news as $item) {
     echo '<div class="card__news">';
     echo '<div class="img__news">';
-    echo '<img src="' . $item['image'] . '" alt="">';
+    echo '<img class="img__news" src="../img/news/' . $item['image'] . '" alt="">';
     echo '</div>';
     echo '<div class="block__data">';
     echo '<a href="pages/news.php?id=' . $item['id'] . '">' . $item['created_at'] . '</a>';

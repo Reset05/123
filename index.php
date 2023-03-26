@@ -178,21 +178,21 @@ if (isset($_SESSION['login'])) {
             </div>
 
             <div class="block__banner">
-                <div class="slider">
-                <div class="slider__item">
-                    <img src="img/1.jpg" alt="Slide 1">
-                </div>
-                <div class="slider__item">
-                    <img src="img/1.jpg" alt="Slide 2">
-                </div>
-                <div class="slider__item">
-                    <img src="img/1.jpg" alt="Slide 3">
-                </div>
+  <div class="slider">
+    <?php
+      $sql = "SELECT img_banner FROM banner";
+      $result = mysqli_query($mysqli, $sql);
+
+      while ($product = mysqli_fetch_assoc($result)) {
+        echo '<div class="slider__item">
+                <img src="img/' . $product['img_banner'] . '" alt="Slide">
+              </div>';
+      }
+    ?>
+  </div>
 </div>
+ </div>
 
-            </div>
-
-        </div>
 
     </section>
 
